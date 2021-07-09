@@ -1,0 +1,33 @@
+{% extends 'core/admin_dashboard.html' %}
+{% load static %}
+{% block admin_content %}
+<main class="mt-5">
+    <section class="form-wrapper container pt-5">
+        <div class="form-content w-75 mx-auto">
+            {% if form_title %}
+            <h1 class="h1"> {{ form_title }}</h1>
+            {% else %}
+            <h1 class="h1"> Form </h1>
+            {% endif %}
+            <hr class="mb-4">
+
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                <small class="text-danger">{{ field.errors }}</small>
+                <div class="form-floating mb-3">
+                    {{ field }}
+                    <label for="">{{ field.label }}</label>
+                    {% if field.help_text %}
+                    <small class="help text-muted">{{ field.help_text|safe }}</small>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div class="form-group mt-4 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary w-75 rounded-5">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock admin_content %}

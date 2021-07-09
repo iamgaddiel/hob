@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'core/includes/header.html' %}
+<main class="mt-5">
+    <section class="form-wrapper mt-5 pt-5">
+        <div class="form-content w-75 mx-auto">
+            <h1 class="h1">Login</h1>
+            <hr class="mb-4">
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                <small class="text-danger">{{ field.errors }}</small>
+                <div class="form-floating mb-3">
+                    {{ field }}
+                    <label for="">{{ field.label }}</label>
+                </div>
+                {% endfor %}
+                <div class="form-group mt-4 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary w-75 rounded-5">Login</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock %}

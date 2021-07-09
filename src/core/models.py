@@ -4,10 +4,21 @@ from django.utils import timezone
 import uuid
 
 
-class Player(AbstractUser):
+
+class CustomUser(AbstractUser):
+    id = models.UUIDField(unique=True, primary_key=True, default=uuid.uuid4)
+
+    def save(self, *args, **kwargs) -> None:
+        self.username = "{0}_{1}".format(
+            self.first_name,
+            self.last_name,
+        )
+        return super().save(*args, **kwargs)
+
+class Player(models.Model):
     FOOTS = [
-        ('left_foot', 'left_foot'),
-        ('right_foot', 'right_foot'),
+        ('left_foot', 'Left Foot'),
+        ('right_foot', 'Right Foot'),
     ]
     QUALIFICATIONS = [
         ('SSCE', 'SSCE'),
@@ -17,6 +28,8 @@ class Player(AbstractUser):
         ('Phd', 'Phd'),
     ]
     id = models.UUIDField(unique=True, primary_key=True, default=uuid.uuid4)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
+    fullname = models.CharField(max_length=100)
     profile_image = models.ImageField(upload_to="player_profile_image", default="player_profile.png")
     age = models.PositiveIntegerField(default=1)
     height = models.FloatField(null=True)
@@ -40,10 +53,3 @@ class Player(AbstractUser):
     def __str__(self) -> str:
         return r"{self.first_name} {self.last_name}"
 
-    def save(self, *args, **kwargs) -> None:
-        self.username = "{0}_{1} -{2}".format(
-            self.first_name,
-            self.last_name,
-            self.timestamp
-        )
-        return super().save(*args, **kwargs)

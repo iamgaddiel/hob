@@ -11,22 +11,33 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import json
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# load environment variable 
+ENV_PATH = os.path.join(BASE_DIR, 'env.json'.lower())
+with open(ENV_PATH, 'r') as data:
+    env = json.loads(data.read())
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j6ygt3d(rmal)r4#xk4kvlu52lnqes2rp#l2#390f3-b9#p624'
+SECRET_KEY = env.get('APP_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'http://www.homeofballers.com/',
+    'https://www.homeofballers.com/',
+]
 
 
 # Application definition
@@ -41,7 +52,7 @@ INSTALLED_APPS = [
 
 
     'core',
-    'academy',
+    'services'
 ]
 
 MIDDLEWARE = [
@@ -124,13 +135,29 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIR = [
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'core.Player'
+AUTH_USER_MODEL = 'core.CustomUser'
+
+
+# AUTH REDIRECT
+LOGIN_REDIRECT_URL = 'dispatcher'
+LOGOUT_REDIRECT_URL = 'index'
+
+
+# PAYSTACK API
+if DEBUG:
+    pass
+else:
+    pass

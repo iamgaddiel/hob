@@ -1,0 +1,345 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'core/includes/header.html' %}
+<main>
+    <div class="banner">
+        <div class="banner-content">
+            <div class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <div class="splide__slide__container">
+                                <img src="{% static 'images/pexels-pixabay-47730.jpg' %}">
+                                <div class="banner-text">
+                                    <div>
+                                        <h1 class="display-2 text-light text-uppercase text-center">Home</h1>
+                                        <h1 class="display-2 text-light text-uppercase text-center">of</h1>
+                                        <h1 class="display-2 text-light text-uppercase text-center">Ballers</h1>
+                                        <p class="text-center text-light mt-4">
+                                            <i
+                                                class="fa fa-arrow-circle-down fa-2x animate__animated animate__bounce animate__repeat-3"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="splide__slide__container">
+                                <img src="{% static 'images/sandro-schuh-HgwY_YQ1m0w-unsplash.jpg' %}">
+                                <div class="banner-text">
+                                    <h1 class="display-3 text-light">Slide Two</h1>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="splide__slide__container">
+                                <img src="{% static 'images/marcel-strauss-Wt9IRghaLN0-unsplash.jpg' %}">
+                                <div class="banner-text">
+                                    <h1 class="display-3 text-light">Slide Three</h1>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="splide__slide__container">
+                                <img src="{% static 'images/pexels-thirdman-5247203.jpg' %}">
+                                <div class="banner-text">
+                                    <h1 class="display-3 text-light">Slide Four</h1>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="splide__slide__container">
+                                <img src="{% static 'images/omar-ram-bhhhzjG0EXE-unsplash.jpg' %}">
+                                <div class="banner-text">
+                                    <h1 class="display-3 text-light">Slide Four</h1>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- products and services -->
+    <section class="products pt-5">
+        <div class="product-content">
+            <!-- Mentorship  -->
+            <section class="mentorship container">
+                <h2 class="text-center h2 text-dark animate__animated animate__zoomIn text-uppercase">Mentorship
+                    Program</h2>
+                <div class="row justify-content-center align-items-center mt-5" style="overflow: hidden;">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card contract-card">
+                            <div class="card-body mt-5">
+                                <h4 class="text-dark text-center display-1">3</h4>
+                                <ul class="list-group-list list-group-flush">
+                                    <li class="list-group-item">
+                                        <h3 class="display-5 text-dark text-center">Months</h3>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h3 class="text-dark text-center mt-3">$72</h3>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer d-flex justify-content-center bg-primary">
+                                <a href="{% url 'mentorship' '3-months' %}"
+                                    class="btn btn-light w-50  mx-auto">
+                                    View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card contract-card">
+                            <div class="card-body mt-5">
+                                <h4 class="text-dark text-center display-1">6</h4>
+                                <ul class="list-group-list list-group-flush">
+                                    <li class="list-group-item">
+                                        <h3 class="display-5 text-dark text-center">Months</h3>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h3 class="text-dark text-center mt-4">$115</h3>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer d-flex justify-content-center bg-primary">
+                                <a href="{% url 'mentorship' '6-months' %}"
+                                    class="btn btn-light w-50  mx-auto">
+                                    View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card contract-card">
+                            <div class="card-body mt-5">
+                                <h4 class="text-dark text-center display-1">1</h4>
+                                <ul class="list-group-list list-group-flush">
+                                    <li class="list-group-item">
+                                        <h3 class="display-5 text-dark text-center">Year</h3>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h3 class="text-dark text-center mt-3">$200</h3>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer d-flex justify-content-center bg-primary">
+                                <a href="{% url 'mentorship' '1-year' %}" class="btn btn-light w-50 mx-auto">
+                                    View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="education mt-5 d-flex justify-content-center align-items-center">
+                <div class="education-content">
+                    <h2 class="text-center font-weight-bold animate__animated animate__fadeInUp text-uppercase">
+                        Education
+                    </h2>
+                    <div class="edu-text">
+                        <p class="animate__animated animate__slideUp animate__animated animate__fadeInUp">
+                            Daily Football Career Guide Broadcast $3 (Monthly)
+                            You will be getting Professional guides directly on your WhatsApp, on how to go about your
+                            Football Career on a daily basis.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- master class -->
+            <section class="master-class pt-5 text-dark">
+                <div class="mclass-content">
+                    <h2 class="text-center text-uppercase h1">
+                        HOBS 3 Days Master</h2>
+                    <h4 class="text-center lead">Class (once every month)</h4>
+                    <div class="mclass-text mt-4">
+                        <p class="text-center">
+                            The HOBS Master Class is a 3 days Professional and Practical class held for Players.
+                        </p>
+                        <p class="text-center">
+                            The Teachers of these Master Class are Football Coaches, Scouts, Agents and consultants
+                            <i><b>Registration Fee: 110</b></i>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- publicity contract -->
+            <section class="contract pt-5 text-light particle-bg">
+                <div class="contract-content container">
+                    <h2 class="text-center text-uppercase h3 text-dark">Publicity Contract</h2>
+                    <!-- players -->
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-sm-12 col-md-4 mt-2">
+                            <div class="card contract-card  animate__animated animate__fadeInUp">
+                                <div class="card-header bg-primary text-muted text-center">
+                                    <p class="h4 text-dark">Players</p>
+                                </div>
+                                <div class="card-body pt-4">
+                                    <div class="border rounded-circle d-flex align-items-center justify-content-center"
+                                        style="height: 100px; width: 100px; margin: auto;">
+                                        <p class="text-center h2 text-primary">$86</p>
+                                    </div>
+                                    <div class="publicity-duration mt-4">
+                                        <p class="p-0 m-0 text-center text-primary h4">3</p>
+                                        <p class="text-center text-primary">Months</p>
+                                    </div>
+                                    <div class="mt-4 bg-danger custom-card-button">
+                                        <a href="{% url 'academy_publicity' 'player' '3-months' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 mt-2">
+                            <div class="card contract-card animate__animated animate__fadeInUp text-primary">
+                                <div class="card-header bg-primary text-muted text-center">
+                                    <p class="h4 text-dark">Players</p>
+                                </div>
+                                <div class="card-body pt-4">
+                                    <div class="border rounded-circle d-flex align-items-center justify-content-center"
+                                        style="height: 100px; width: 100px; margin: auto;">
+                                        <p class="text-center h2 text-primary">$143</p>
+                                    </div>
+                                    <div class="publicity-duration mt-4">
+                                        <p class="p-0 m-0 text-center text-primary h4">6</p>
+                                        <p class="text-center text-primary">Months</p>
+                                    </div>
+                                    <div class="mt-4 bg-danger custom-card-button">
+                                        <a href="{% url 'academy_publicity' 'player' '6-months' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 mt-2">
+                            <div class="card contract-card animate__animated animate__fadeInUp text-primary">
+                                <div class="card-header bg-primary text-muted text-center">
+                                    <p class="h4 text-dark">Players</p>
+                                </div>
+                                <div class="card-body pt-4">
+                                    <div class="border rounded-circle d-flex align-items-center justify-content-center"
+                                        style="height: 100px; width: 100px; margin: auto;">
+                                        <p class="text-center h2 text-primary">$229</p>
+                                    </div>
+                                    <div class="publicity-duration mt-4">
+                                        <p class="p-0 m-0 text-center text-primary h4">1</p>
+                                        <p class="text-center text-primary">Year</p>
+                                    </div>
+                                    <div class="mt-4 bg-danger custom-card-button">
+                                        <a href="{% url 'academy_publicity' 'player' '1-year' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Academies -->
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-sm-12 col-md-4 mt-2">
+                            <div class="card contract-card animate__animated animate__fadeInUp text-primary">
+                                <div class="card-header bg-primary text-muted text-center">
+                                    <p class="h4 text-dark">Academies</p>
+                                </div>
+                                <div class="card-body pt-4">
+                                    <div class="border rounded-circle d-flex align-items-center justify-content-center"
+                                        style="height: 100px; width: 100px; margin: auto;">
+                                        <p class="text-center h2 text-primary">$143</p>
+                                    </div>
+                                    <div class="publicity-duration mt-4">
+                                        <p class="p-0 m-0 text-center text-primary h4">3</p>
+                                        <p class="text-center text-primary">Months</p>
+                                    </div>
+                                    <div class="mt-4 bg-danger custom-card-button">
+                                        <a href="{% url 'academy_publicity' 'academy' '3-months' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 mt-2">
+                            <div class="card contract-card animate__animated animate__fadeInUp text-primary">
+                                <div class="card-header bg-primary text-muted text-center">
+                                    <p class="h4 text-dark">Academies</p>
+                                </div>
+                                <div class="card-body pt-4">
+                                    <div class="border rounded-circle d-flex align-items-center justify-content-center"
+                                        style="height: 100px; width: 100px; margin: auto;">
+                                        <p class="text-center h2 text-primary">$229</p>
+                                    </div>
+                                    <div class="publicity-duration mt-4">
+                                        <p class="p-0 m-0 text-center text-primary h4">6</p>
+                                        <p class="text-center text-primary">Months</p>
+                                    </div>
+                                    <div class="mt-4 bg-danger custom-card-button">
+                                        <a href="{% url 'academy_publicity' 'academy' '6-months' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 mt-2">
+                            <div class="card contract-card animate__animated animate__fadeInUp text-primary">
+                                <div class="card-header bg-primary text-muted text-center">
+                                    <p class="h4 text-dark">Academies</p>
+                                </div>
+                                <div class="card-body pt-4">
+                                    <div class="border rounded-circle d-flex align-items-center justify-content-center"
+                                        style="height: 100px; width: 100px; margin: auto;">
+                                        <p class="text-center h2 text-primary">$372</p>
+                                    </div>
+                                    <div class="publicity-duration mt-4">
+                                        <p class="p-0 m-0 text-center text-primary h4">1</p>
+                                        <p class="text-center text-primary">Year</p>
+                                    </div>
+                                    <div class="mt-4 bg-danger custom-card-button">
+                                        <a href="{% url 'academy_publicity' 'academy' '1-year' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contract-note mt-5 mb-5">
+                        <small class="text-ceter">
+                            <b>Note</b> The exchange rate for Nigerians are $1 = N350
+                        </small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- consultation -->
+            <section class="consultation pt-5 ">
+                <div class="consultation-content container">
+                    <h2 class="text-center font-weight-bold animate__animated animate__zoomIn text-uppercase">
+                        Consultation
+                    </h2>
+                    <div class="consulation-text text-center mt-5">
+                        <p>
+                            1 Hour With The Boss $15
+                        </p>
+                        <p>
+                            The 1 Hour With The Boss is a scheduled appointment <br> with Chidi J. Myles for a special
+                            one on
+                            one consultation service.
+                        </p>
+                        <a href="" class="btn btn-light">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="about-content container">
+
+        </div>
+    </section>
+</main>
+{% endblock %}

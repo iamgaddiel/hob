@@ -3,7 +3,36 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import fields
 from django.forms import models, widgets
-from core.models import Player
+from core.models import Events, Player
+
+
+
+class EventCreationForm(forms.ModelForm):
+    class Meta:
+        model = Events
+        exclude = ['timestamp']
+        widgets = {
+            'title' : widgets.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Title'
+            }),
+            'poster' : widgets.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Title',
+                'type': 'file'
+            }),
+            'kickoff_date' : widgets.DateInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Title',
+                'type': 'date'
+            }),
+            'detail' : widgets.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Title',
+                'rows': '25',
+                'style': 'height: 200px;'
+            }),
+        }
 
 
 class PlayerCreationForm(forms.ModelForm):

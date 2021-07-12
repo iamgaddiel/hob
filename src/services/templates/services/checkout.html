@@ -1,0 +1,140 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'core/includes/header.html' %}
+<style>
+    .checkout-form {
+        width: 80vw;
+        padding: 20px;
+        background: #fff;
+    }
+
+    .checkout-input {
+        height: 40px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.35);
+    }
+
+    .checkout-submit {
+        width: 100%;
+        height: 40px;
+        background-color: var(--blue);
+        text-align: center;
+        color: #fff;
+    }
+</style>
+<main>
+    <!-- products and services -->
+    <section class="checkout-wrapper pt-5" id="products">
+        <div class="checkout-content d-flex justify-content-center align-items-center" style="height: 90vh;">
+            <form class="checkout-form" id="checkoutForm" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <h3 class="h3 text-muted">Checkout</h3>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="{{ PUBLICITY_NAME }}" id="name" name="name" class="checkout-input form-control"
+                        value="{{ PUBLICITY_NAME }}" disabled>
+                    <label for="">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="{{ PUBLICITY_PACKAGE }}" id="package" name="package" class="checkout-input form-control"
+                        value="{{ PUBLICITY_PACKAGE }}" disabled>
+                    <label for="">Package</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="{{ PACKAGE_PRICE }}" id="price" name="price" class="checkout-input form-control"
+                    value="{{ PACKAGE_PRICE }}" disabled>
+                    <label for="">Price</label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Proceed To Payment" class="checkout-submit btn h-50">
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+<script>
+    let checkoutForm = document.querySelector("#checkoutForm")
+    checkoutForm.addEventListener('submit', function(event) {
+        event.preventDefault()
+        const key = "{{ PAYSTACK_PUBLIC_KEY }}"
+        const amount = parseInt("{{ PACKAGE_PRICE }}") * 100
+        const email = 'ighotagaddiel98@email.com'
+        const academy = "{{ PUBLICITY_NAME }}"
+        const duration = "{{ PUBLICITY_PACKAGE }}"
+        makePayment(key, email, amount)
+    })
+
+    function makePayment(key, email, amount, ref, academy, duration) {
+        var handler = PaystackPop.setup({
+            key: key, // This is your public key only! 
+            email: email, // Customers email
+            amount: amount,
+            ref: ref || parseInt(Math.random() * 10000),
+            metadata: { // More custom information about the transaction
+                custom_fields: [
+                    {
+                        "academy": academy,
+                        "duration": duration
+                    }
+                ]
+            },
+            callback: function (response) {
+                console.log(response)
+                console.log(response.trxref)
+                const baseURL = `${location.protocol}//${location.host}/`
+                const endPoint = `${baseURL}services/confirm/payment/${response.trxref}/`
+                let cookie = document.cookie
+                let csrfToken = cookie.substring(cookie.indexOf('=') + 1)
+                
+                try{
+                    fetch(endPoint, {
+                        method: "POST",
+                        body : JSON.stringify({
+                            "txref": response.txref,
+                            "academy": academy,
+                            "email": email,
+                            "status": response.status,
+                            "duration": duration,
+                            "transaction" : response.transaction,
+                        }),
+                        credentials : 'include', 
+                        credentials : 'same-origin', 
+                        headers : {
+                            "X-CSRFToken": getCookie("csrftoken"),
+                        }
+                    })
+                    .then( data => data.json())
+                    .then( res => {
+                        console.log(res)
+                    })
+                }
+                catch(err){
+                    console.error("could not complete transaction", err)
+                }
+            },
+            onClose: function () {
+                alert('window closed');
+            }
+        });
+        // Payment Request Just Fired  
+        handler.openIframe();
+    }
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;}
+</script>
+{% endblock %}

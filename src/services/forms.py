@@ -26,7 +26,7 @@ class MentorshipForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Email'
             }),
-            'position_of_play': widgets.TextInput(attrs={
+            'position_of_play': widgets.Select(attrs={
                 'class': 'form-control',
                 'placeholder': 'Position of Play'
             }),
@@ -40,7 +40,7 @@ class MentorshipForm(forms.ModelForm):
 class AcademyPulicityForm(forms.ModelForm):
     class Meta:
         model = AcademyPulicity
-        exclude = ['timestamp', 'publicity_academy']
+        exclude = ['timestamp', 'duration']
         widgets = {
             'name': widgets.TextInput(attrs={
                 'class': 'form-control',
@@ -53,7 +53,8 @@ class AcademyPulicityForm(forms.ModelForm):
             }),
             'video_link': widgets.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'video_link'
+                'placeholder': 'video_link',
+                'type': 'url'
             }),
             'facility_image_1': widgets.TextInput(attrs={
                 'class': 'form-control',
@@ -100,7 +101,8 @@ class AcademyPulicityForm(forms.ModelForm):
             }),
             'video_link_for_players': widgets.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'video_link_for_players'
+                'placeholder': 'video_link_for_players',
+                'type': 'url'
             }),
 
         } 

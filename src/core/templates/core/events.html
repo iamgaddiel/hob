@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'core/includes/header.html' %}
+
+<section class="py-5 mt-5 pt-5" style="overflow: hidden;"">
+    <h3 class=" container-fluid h1 text-uppercase text-center">HOB Events </h3>
+    <section class="event-list-warpper p-0 mt-5">
+        <div class="event-list-content">
+
+            <div class="row">
+                {% for object in object_list %}
+                <div class="col-sm-12 col-md-3">
+                    <div class="card event-card">
+                        <a href="{% url 'events_detail' object.id %}" class="nav-link p-0">
+                            <img class="card-img-top event-image" src="{{ object.poster.url }}" alt="Card image">
+                            <div class="card-img-overlay text-light ec-overlay" style="overflow: hidden;">
+                                <div class="event-card-text">
+                                    <h4 class="card-title">{{ object.title }}</h4>
+                                    <p class="card-text">{{ object.kickoff_date }}.</p>
+                                    <div class="view-btn">
+                                        Check out
+                                        <i
+                                            class="fa fa-arrow-right animate__animated animate__fadeInLeft aniate__slow"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <h1 class="text-center text-muted">There's no event yet, Kindly check back later</h1>
+                
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+</section>
+{% endblock content %}

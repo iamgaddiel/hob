@@ -1,13 +1,16 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block content %}
-<div id="mySidenav" class="sidenav">
+<div id="mySidenav" class="sidenav polygon-bg">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="nav-links">
-        <a href="{% url 'index' %}">Check Home page</a>
-        <a href="{% url 'admin_list_player' %}">Players</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <a href="{% url 'index' %}"><i class="fa fa-home"></i> Home page</a>
+        <a href="{% url 'admin_list_player' %}"><i class="fa fa-users"></i> Players</a>
+        <a href="#"><i class="fa fa-handshake"></i> Mentorship</a>
+        <!-- <a href="#"><i class="fa fa-pen-nib"></i> Publicity</a> -->
+        <a href="#"><i class="fa fa-school"></i> Academies</a>
+        <a href="{% url 'admin_events_list' %}"><i class="far fa-calendar"></i> Events</a>
+        <a href="{% url 'admin_events_list' %}"><i class="far fa-calendar"></i> </a>
     </div>
 </div>
 
@@ -26,7 +29,7 @@
         </div>
     </div>
 </header>
-<main class="mt-5" id="main">
+<main class="mt-5 particle-bg" id="main">
     <div class="container-fluid">
         {% block admin_content %}
             

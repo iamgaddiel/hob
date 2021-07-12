@@ -17,10 +17,11 @@
             <div class="list container">
                 <ul class="list-group">
                     {% for object in object_list %}
+                    {% if list_type == 'player' %}
                     <li class="list-group-item">
                         <a href="{% url 'admin_get_player' object.id %}" class="nav-link p-0">
                             <div class="d-flex justify-content-between">
-                                
+
                                 <div class="lhs d-flex align-items-center">
                                     <div class="profile-image-preview">
                                         <img src="{{ object.profile_image.url }}" alt="profile_image">
@@ -35,28 +36,69 @@
                                     </div>
                                 </div>
                                 <div class="rhs">
-                                    <small class="text-muted text-end" style="font-size: xx-small;">{{ object.timestamp }}</small>
+                                    <small class="text-muted text-end" style="font-size: xx-small;">
+                                        {{ object.timestamp}}
+                                    </small>
                                 </div>
                             </div>
                         </a>
                     </li>
+                    {% elif list_type == 'events' %}
+                    <li class="list-group-item">
+                        <a href="{% url 'admin_get_event' object.pk %}" class="nav-link p-0">
+                            <div class="d-flex justify-content-between">
+
+                                <div class="lhs d-flex align-items-center">
+                                    <div class="profile-image-preview">
+                                        <img src="{{ object.poster.url }}" alt="profile_image">
+                                    </div>
+                                    <div class="player-detail">
+                                        <div class="d-flex w-100">
+                                            <div class="lhs">
+                                                <b class="text-dark">{{ object.title }} {{ object.poster.url }} </b> <br>
+                                                <small class="text-muted">{{ object.kickoff_date }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rhs">
+                                    <small class="text-muted text-end" style="font-size: xx-small;">
+                                        {{ object.timestamp }}
+                                    </small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {% endif %}
                     {% empty %}
                     <li class="list-group-item">
-                        <h1 class="h4">I can't find any player </h1>
+                        <h1 class="h4">Sorry I could not find anything on {{dashboard_title}} </h1>
                     </li>
                     {% endfor %}
                 </ul>
             </div>
 
             <!-- floating button -->
-            <div class="floating-btn bg-primary rounded-circle d-flex justify-content-center align-items-center p-4">
-                <div class="floating-btn-content">
-                    <a href="{% url 'admin_create_player' %}" class="nav-link p-0">
+            {% if list_type == 'player' %}
+            <a href="{% url 'admin_create_player' %}" class="nav-link p-0">
+                <div
+                    class="floating-btn bg-primary rounded-circle d-flex justify-content-center align-items-center p-4">
+                    <div class="floating-btn-content">
                         <i class="fa fa-plus text-light"></i>
-                    </a>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </a>
+            {% elif list_type == 'events' %}
+
+            <a href="{% url 'admin_create_event' %}" class="nav-link p-0">
+                <div
+                    class="floating-btn bg-primary rounded-circle d-flex justify-content-center align-items-center p-4">
+                    <div class="floating-btn-content">
+                        <i class="fa fa-plus text-light"></i>
+                    </div>
+                </div>
+            </a>
+            {% endif %}
     </section>
 </main>
 {% endblock admin_content %}

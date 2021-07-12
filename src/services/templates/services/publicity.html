@@ -4,64 +4,21 @@
 
 <section class="main container py-5 mt-5 pt-5">
     <section class="form-note">
-        <h3 class="h3">HOBS Mentorship Program Application Form! </h3>
+        <h3 class="h3">HOBS Publicity Contract Form! </h3>
         <p>
-            We are very glad to know you are interested in participating in our program and achieving all of your
-            Football Career dreams. Please carefully read this application. Make sure the information you provide is
-            complete and accurate. Do well to read through each program to fully understand before filling the form.
+            Depending on the duration of contract, Home Of Ballers will be in charge of player's, Academy's promotion
+            and Publicity of videos, events on our official website, social media and YouTube . Players/Academy will
+            have there profile uploaded on the Home Of Ballers official website on the duration of contract.
         </p>
 
-        {% if package == '3-months' %}
-        <h4 class="h4">3 Months Mentorship Program</h4>
-        <ol class="list-group list-group-flush p-0">
-            <li class="list-group-item">Free social media promotion/ Publicity</li>
-            <li class="list-group-item">Free Professional Media Page Set up </li>
-            <li class="list-group-item">Free Access to the HOBS Career Guide Materials</li>
-            <li class="list-group-item">Access to the Daily Football Career Guide Broadcast</li>
-            <li class="list-group-item">Football CV Setup</li>
-        </ol>
-        {% elif package == '6-months' %}
-        <h4 class="h4">6 Months Mentorship Program</h4>
-        <ol class="list-group list-group-flush p-0">
-            <li class="list-group-item">Free social media promotion/ Publicity</li>
-            <li class="list-group-item">Free Professional Media Page Set up </li>
-            <li class="list-group-item">Free Access to the HOBS Career Guide Materials</li>
-            <li class="list-group-item">Access to the Daily Football Career Guide Broadcast</li>
-            <li class="list-group-item">Football CV Setup</li>
-            <li class="list-group-item">Access to Join HOBS for Trial Programs</li>
-            <li class="list-group-item">Professional profile on the HOBS official website</li>
-        </ol>
-        {% elif package == '1-year' %}
-        <h4 class="h4"> 1 Year Mentorship Program</h4>
-        <ol class="list-group list-group-flush p-0">
-            <li class="list-group-item">Free social media promotion/ Publicity</li>
-            <li class="list-group-item">Free Professional Media Page Set up </li>
-            <li class="list-group-item">Free Access to the HOBS Career Guide Materials</li>
-            <li class="list-group-item">Access to the Daily Football Career Guide Broadcast</li>
-            <li class="list-group-item">Football CV Setup</li>
-            <li class="list-group-item">Access to Join HOBS for Trial Programs</li>
-            <li class="list-group-item">Professional profile on the HOBS official website</li>
-            <li class="list-group-item">layer will be part of HOBS Video Projects.</li>
-            <li class="list-group-item">One on one meeting with Chidi J. Myleyles ( Football Consultant)</li>
-        </ol>
-        {% endif %}
+        <a href="{% url 'download_publicity_contract' %}" class="rounded-btn">
+            <i class="fa fa-download"></i>
+            download contract
+        </a>
     </section>
 
-    <section class="formfooter mt-3">
-        <p>
-            (Players who can't make direct payment with there credit card can send money to the account
-            <b><i>Chidi Godstime 2140400045 UBA Bank</i></b> Though we are waiting for our CAC certificate so we can get
-            our official
-            bank account.
-        </p>
-        <p>
-            Those who make payment through bank should send proof of payment to <b><i>homeofballers1@gmail.com</i></b>
-            or
-            <b><i>+2348027992764 on WhatsApp</i></b>.
-        </p>
-    </section>
     <div class="form-wrapper mt-5 px-5 py-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data" id="publicityForm">
             {% csrf_token %}
             {% for field in form %}
             <div class="form-floating mt-3">
@@ -74,13 +31,12 @@
             {% endfor %}
             <div class="form-group">
                 <input type="hidden" name="package" value="{{ package }}">
-                <input type="hidden" name="publicity_category" value="{{ publicity_category }}">
+                <input type="hidden" name="price" value="{{ price }}">
             </div>
             <div class="d-flex justify-content-center mt-5">
                 <button type="submit" class="btn btn-primary w-75">Make Payment</button>
             </div>
         </form>
     </div>
-
 </section>
 {% endblock content %}

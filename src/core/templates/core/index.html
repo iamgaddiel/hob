@@ -17,8 +17,11 @@
                                         <h1 class="display-2 text-light text-uppercase text-center">of</h1>
                                         <h1 class="display-2 text-light text-uppercase text-center">Ballers</h1>
                                         <p class="text-center text-light mt-4">
-                                            <i
-                                                class="fa fa-arrow-circle-down fa-2x animate__animated animate__bounce animate__repeat-3"></i>
+                                            <a href="#about">
+                                                <i
+                                                    class="fa fa-arrow-circle-down fa-2x animate__animated animate__bounce animate__repeat-3">
+                                                </i>
+                                            </a>
                                         </p>
                                     </div>
                                 </div>
@@ -62,9 +65,35 @@
         </div>
     </div>
 
+    <!-- about -->
+    <section id="about" class="pt-5">
+        <div class="about-content container p-5">
+            <div class="row justify-content-evenly">
+                <div class="col-sm-12 col-md-6">
+                    <div class="about-image-wrapper d-flex justify-content-center align-items-center">
+                        <img src="{% static 'images/bulb.67b0932b.png' %}" alt="light bulb">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="about-text-wrapper p-5">
+                        <h3 class="h3 text-muted text-center">About</h3>
+                        <p class="text-muted sm-text-center animate__animated animate__fadeInRight"
+                            style="line-height: 2.5rem;">
+                            Home Of Ballers is a firm dedicated in the development of Grassroot Football in Africa
+                            through enlisting the most professional practices and a personalized management workstation
+                            to help Educate, Promote, Mobilize, Brand & Inspire soccer development and participation on
+                            a professional level. Our platform will be designed to comprehensively profile and showcase
+                            Africa's talented football players, academies, clubs, events and brands
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- products and services -->
-    <section class="products pt-5">
-        <div class="product-content">
+    <section class="products pt-5" id="products">
+        <div class="product-content pt-5">
             <!-- Mentorship  -->
             <section class="mentorship container">
                 <h2 class="text-center h2 text-dark animate__animated animate__zoomIn text-uppercase">Mentorship
@@ -76,7 +105,7 @@
                                 <h4 class="text-dark text-center display-1">3</h4>
                                 <ul class="list-group-list list-group-flush">
                                     <li class="list-group-item">
-                                        <h3 class="display-5 text-dark text-center">Months</h3>
+                                        <h4 class="h4 text-dark text-center">Months</h4>
                                     </li>
                                     <li class="list-group-item">
                                         <h3 class="text-dark text-center mt-3">$72</h3>
@@ -84,8 +113,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer d-flex justify-content-center bg-primary">
-                                <a href="{% url 'mentorship' '3-months' %}"
-                                    class="btn btn-light w-50  mx-auto">
+                                <a href="{% url 'mentorship' '3-months' %}" class="btn btn-light w-50  mx-auto">
                                     View
                                 </a>
                             </div>
@@ -97,7 +125,7 @@
                                 <h4 class="text-dark text-center display-1">6</h4>
                                 <ul class="list-group-list list-group-flush">
                                     <li class="list-group-item">
-                                        <h3 class="display-5 text-dark text-center">Months</h3>
+                                        <h3 class="h4 text-dark text-center">Months</h3>
                                     </li>
                                     <li class="list-group-item">
                                         <h3 class="text-dark text-center mt-4">$115</h3>
@@ -105,8 +133,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer d-flex justify-content-center bg-primary">
-                                <a href="{% url 'mentorship' '6-months' %}"
-                                    class="btn btn-light w-50  mx-auto">
+                                <a href="{% url 'mentorship' '6-months' %}" class="btn btn-light w-50  mx-auto">
                                     View
                                 </a>
                             </div>
@@ -118,7 +145,7 @@
                                 <h4 class="text-dark text-center display-1">1</h4>
                                 <ul class="list-group-list list-group-flush">
                                     <li class="list-group-item">
-                                        <h3 class="display-5 text-dark text-center">Year</h3>
+                                        <h3 class="h4 text-dark text-center">Year</h3>
                                     </li>
                                     <li class="list-group-item">
                                         <h3 class="text-dark text-center mt-3">$200</h3>
@@ -152,7 +179,7 @@
             </section>
 
             <!-- master class -->
-            <section class="master-class pt-5 text-dark">
+            <section class="master-class pt-5 text-dark bg-light">
                 <div class="mclass-content">
                     <h2 class="text-center text-uppercase h1">
                         HOBS 3 Days Master</h2>
@@ -173,76 +200,12 @@
             <section class="contract pt-5 text-light particle-bg">
                 <div class="contract-content container">
                     <h2 class="text-center text-uppercase h3 text-dark">Publicity Contract</h2>
-                    <!-- players -->
-                    <div class="row justify-content-center mt-5">
-                        <div class="col-sm-12 col-md-4 mt-2">
-                            <div class="card contract-card  animate__animated animate__fadeInUp">
-                                <div class="card-header bg-primary text-muted text-center">
-                                    <p class="h4 text-dark">Players</p>
-                                </div>
-                                <div class="card-body pt-4">
-                                    <div class="border rounded-circle d-flex align-items-center justify-content-center"
-                                        style="height: 100px; width: 100px; margin: auto;">
-                                        <p class="text-center h2 text-primary">$86</p>
-                                    </div>
-                                    <div class="publicity-duration mt-4">
-                                        <p class="p-0 m-0 text-center text-primary h4">3</p>
-                                        <p class="text-center text-primary">Months</p>
-                                    </div>
-                                    <div class="mt-4 bg-danger custom-card-button">
-                                        <a href="{% url 'academy_publicity' 'player' '3-months' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4 mt-2">
-                            <div class="card contract-card animate__animated animate__fadeInUp text-primary">
-                                <div class="card-header bg-primary text-muted text-center">
-                                    <p class="h4 text-dark">Players</p>
-                                </div>
-                                <div class="card-body pt-4">
-                                    <div class="border rounded-circle d-flex align-items-center justify-content-center"
-                                        style="height: 100px; width: 100px; margin: auto;">
-                                        <p class="text-center h2 text-primary">$143</p>
-                                    </div>
-                                    <div class="publicity-duration mt-4">
-                                        <p class="p-0 m-0 text-center text-primary h4">6</p>
-                                        <p class="text-center text-primary">Months</p>
-                                    </div>
-                                    <div class="mt-4 bg-danger custom-card-button">
-                                        <a href="{% url 'academy_publicity' 'player' '6-months' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4 mt-2">
-                            <div class="card contract-card animate__animated animate__fadeInUp text-primary">
-                                <div class="card-header bg-primary text-muted text-center">
-                                    <p class="h4 text-dark">Players</p>
-                                </div>
-                                <div class="card-body pt-4">
-                                    <div class="border rounded-circle d-flex align-items-center justify-content-center"
-                                        style="height: 100px; width: 100px; margin: auto;">
-                                        <p class="text-center h2 text-primary">$229</p>
-                                    </div>
-                                    <div class="publicity-duration mt-4">
-                                        <p class="p-0 m-0 text-center text-primary h4">1</p>
-                                        <p class="text-center text-primary">Year</p>
-                                    </div>
-                                    <div class="mt-4 bg-danger custom-card-button">
-                                        <a href="{% url 'academy_publicity' 'player' '1-year' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!-- Academies -->
                     <div class="row justify-content-center mt-5">
-                        <div class="col-sm-12 col-md-4 mt-2">
+                        <div class="col-sm-12 col-md-4 mt-2 mt-4">
                             <div class="card contract-card animate__animated animate__fadeInUp text-primary">
                                 <div class="card-header bg-primary text-muted text-center">
-                                    <p class="h4 text-dark">Academies</p>
+                                    <p class="h4 text-light">Academies</p>
                                 </div>
                                 <div class="card-body pt-4">
                                     <div class="border rounded-circle d-flex align-items-center justify-content-center"
@@ -254,16 +217,17 @@
                                         <p class="text-center text-primary">Months</p>
                                     </div>
                                     <div class="mt-4 bg-danger custom-card-button">
-                                        <a href="{% url 'academy_publicity' 'academy' '3-months' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View
+                                        <a href="{% url 'academy_publicity' '3-months' '143' %}"
+                                            class="btn btn-primary w-100 mx-auto text-align-center"> View
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-4 mt-2">
+                        <div class="col-sm-12 col-md-4 mt-2 mt-4">
                             <div class="card contract-card animate__animated animate__fadeInUp text-primary">
                                 <div class="card-header bg-primary text-muted text-center">
-                                    <p class="h4 text-dark">Academies</p>
+                                    <p class="h4 text-light">Academies</p>
                                 </div>
                                 <div class="card-body pt-4">
                                     <div class="border rounded-circle d-flex align-items-center justify-content-center"
@@ -275,16 +239,17 @@
                                         <p class="text-center text-primary">Months</p>
                                     </div>
                                     <div class="mt-4 bg-danger custom-card-button">
-                                        <a href="{% url 'academy_publicity' 'academy' '6-months' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View
+                                        <a href="{% url 'academy_publicity' '6-months' '229' %}"
+                                            class="btn btn-primary w-100 mx-auto text-align-center"> View
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-4 mt-2">
+                        <div class="col-sm-12 col-md-4 mt-2 mt-4">
                             <div class="card contract-card animate__animated animate__fadeInUp text-primary">
                                 <div class="card-header bg-primary text-muted text-center">
-                                    <p class="h4 text-dark">Academies</p>
+                                    <p class="h4 text-light">Academies</p>
                                 </div>
                                 <div class="card-body pt-4">
                                     <div class="border rounded-circle d-flex align-items-center justify-content-center"
@@ -296,7 +261,8 @@
                                         <p class="text-center text-primary">Year</p>
                                     </div>
                                     <div class="mt-4 bg-danger custom-card-button">
-                                        <a href="{% url 'academy_publicity' 'academy' '1-year' %}" class="btn btn-primary w-100 mx-auto text-align-center"> View
+                                        <a href="{% url 'academy_publicity' '1-year' '372' %}"
+                                            class="btn btn-primary w-100 mx-auto text-align-center"> View
                                         </a>
                                     </div>
                                 </div>
@@ -332,14 +298,41 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Booking -->
+            <section class="booking pt-5">
+                <div class="booking-content container">
+                    <div class="row justify-content-evenly">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="about-text-wrapper p-5">
+                                <h3 class="h3 text-muted text-center">Booking</h3>
+                                <p class="text-muted text-justified animate__animated animate__fadeInLeft"
+                                    style="line-height: 2.5rem;">
+                                    If you intend inviting Chidi J. Myles for a speaking engagement, depending on the
+                                    engagement
+                                    there will be charges attached.
+                                    On charity events, Chidi J. Myles has volunteered to be speaking for free as long as
+                                    all
+                                    logistics are taken care of by organizers.
+                                </p>
+                                <div class="download-btn">
+                                    <a href="{% url 'download_booking_form' %}" class="rounded-btn-fill">
+                                        <i class="fa fa-download"></i>
+                                        download contract
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="about-image-wrapper d-flex justify-content-center align-items-center">
+                                <img src="{% static 'images/permission_to_use_illustration.svg' %}" alt="illustration">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
 
-    <!-- About -->
-    <section class="about">
-        <div class="about-content container">
-
-        </div>
-    </section>
 </main>
 {% endblock %}

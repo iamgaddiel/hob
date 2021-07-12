@@ -2,25 +2,25 @@
 {% load static %}
 {% block admin_content %}
 <main class="mt-5">
-    <section class="form-wrapper container pt-5">
+    <section class="form-wrapper container pt-5 bg-light">
         <div class="form-content w-75 mx-auto">
             {% if form_title %}
-            <h1 class="h1"> {{ form_title }}</h1>
+            <h1 class="h1"> {{ form_title }} Form</h1>
             {% else %}
             <h1 class="h1"> Form </h1>
             {% endif %}
             <hr class="mb-4">
 
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
-                <small class="text-danger">{{ field.errors }}</small>
                 <div class="form-floating mb-3">
                     {{ field }}
                     <label for="">{{ field.label }}</label>
                     {% if field.help_text %}
                     <small class="help text-muted">{{ field.help_text|safe }}</small>
                     {% endif %}
+                    <small class="text-danger">{{ field.errors }}</small>
                 </div>
                 {% endfor %}
                 <div class="form-group mt-4 d-flex justify-content-center">

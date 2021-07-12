@@ -1,0 +1,17 @@
+{% extends 'core/admin_dashboard.html' %}
+{% load static %}
+{% block admin_content %}
+<main class="mt-5">
+    <section class="pt-5">
+        <section class="event-header-image w-100">
+            <img src="{{ event.poster.url }}" alt=" event image">
+        </section>
+        <section class="event-title">
+            <h1 class="h1 text-center text-uppercase">{{ event.title }}</h1>
+        </section>
+        <section class="event-body container">
+            <p>{{ event.detail }}</p>
+        </section>
+    </section>
+</main>
+{% endblock admin_content %}

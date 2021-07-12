@@ -53,3 +53,13 @@ class Player(models.Model):
     def __str__(self) -> str:
         return r"{self.first_name} {self.last_name}"
 
+class Events(models.Model):
+    title = models.CharField(max_length=400, unique=True)
+    poster = models.ImageField(upload_to="event_image", default="image_image.png")
+    kickoff_date = models.DateField()
+    detail = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=timezone.now)
+
+    
+    def ___str__(self):
+        pass

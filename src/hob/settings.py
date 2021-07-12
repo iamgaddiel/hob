@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
     'core',
     'services'
 ]
@@ -158,6 +157,8 @@ LOGOUT_REDIRECT_URL = 'index'
 
 # PAYSTACK API
 if DEBUG:
-    pass
+    PAYSTACK_PRIVATE_KEY = env.get('PAYSTACK_TEST_PRIVATE_API_KEY')
+    PAYSTACK_PUBLIC_KEY = env.get('PAYSTACK_TEST_PUBLIC_API_KEY')
 else:
-    pass
+    PAYSTACK_PRIVATE_KEY = env.get('PAYSTACK_LIVE_PRIVATE_API_KEY')
+    PAYSTACK_PUBLIC_KEY = env.get('PAYSTACK_LIVE_PUBLIC_API_KEY')

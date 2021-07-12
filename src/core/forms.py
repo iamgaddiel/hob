@@ -39,7 +39,8 @@ class PlayerCreationForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = [
-            'fullname',
+            'first_name',
+            'last_name',
             'age',
             'profile_image',
             'height',
@@ -83,7 +84,11 @@ class PlayerCreationForm(forms.ModelForm):
             'placeholder': 'age',
             'class': "form-control"
         })
-        self.fields['fullname'].widget.attrs.update({
+        self.fields['first_name'].widget.attrs.update({
+            'placeholder': 'fullname',
+            'class': "form-control"
+        })
+        self.fields['last_name'].widget.attrs.update({
             'placeholder': 'fullname',
             'class': "form-control"
         })

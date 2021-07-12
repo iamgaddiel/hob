@@ -1,19 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 from django.utils import timezone
 import uuid
 
 
-
-class CustomUser(AbstractUser):
-    id = models.UUIDField(unique=True, primary_key=True, default=uuid.uuid4)
-
-    def save(self, *args, **kwargs) -> None:
-        self.username = "{0}_{1}".format(
-            self.first_name,
-            self.last_name,
-        )
-        return super().save(*args, **kwargs)
 
 class Player(models.Model):
     FOOTS = [
@@ -27,9 +18,10 @@ class Player(models.Model):
         ('HND', 'HND'),
         ('Phd', 'Phd'),
     ]
-    id = models.UUIDField(unique=True, primary_key=True, default=uuid.uuid4)
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
-    fullname = models.CharField(max_length=100)
+    id = models.UUIDField(unique=True, primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    first_name = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True)
     profile_image = models.ImageField(upload_to="player_profile_image", default="player_profile.png")
     age = models.PositiveIntegerField(default=1)
     height = models.FloatField(null=True)
@@ -51,7 +43,7 @@ class Player(models.Model):
 
     
     def __str__(self) -> str:
-        return r"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name}"
 
 class Events(models.Model):
     title = models.CharField(max_length=400, unique=True)

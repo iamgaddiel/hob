@@ -46,6 +46,10 @@ class AcademyPulicityForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Full Name '
             }),
+            'email' : widgets.EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Email'
+            }),
             'profile_image': widgets.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'profile_image ',

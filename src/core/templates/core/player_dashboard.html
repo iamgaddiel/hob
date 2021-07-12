@@ -1,6 +1,7 @@
-{% extends 'core/admin_dashboard.html' %}
+{% extends 'core/base.html' %}
 {% load static %}
-{% block admin_content %}
+{% block content %}
+{% include "core/includes/header.html" %}
 <main class="mt-5 container-fluid floating-abs pb-5">
     <section class="list-wrapper pt-5">
         <div class="list-wrapper-content">
@@ -101,4 +102,4 @@
         </div>
     </section>
 </main>
-{% endblock admin_content %}
+{% endblock content %}

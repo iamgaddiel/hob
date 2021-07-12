@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
     'localhost',
     'http://www.homeofballers.com/',
     'https://www.homeofballers.com/',
+    'https://hob.pythonanywhere.com/'
 ]
 
 

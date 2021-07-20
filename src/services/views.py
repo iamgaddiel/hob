@@ -50,6 +50,16 @@ class Mentorship(CreateView):
         context = super().get_context_data(**kwargs)
         context['package'] = self.kwargs.get('package')
         return context
+    
+    def form_valid(self, form) -> HttpResponse:
+        # store form detail to session
+        form_data = self.request.POST
+
+        self.request.session["MENTORSHIP_DETAILS"] = form_data
+        self.request.session["PACKAGE_PRICE"] = form_data.get("price")
+        self.request.session["PUBLICITY_NAME"] = form_data.get('name')
+        self.request.session["PUBLICITY_PACKAGE"] = form_data.get('package')
+        return super().form_valid(form)
 
 class ConfirmPayment(View):
     def get(self, request, *args,**kwargs):

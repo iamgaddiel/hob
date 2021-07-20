@@ -34,16 +34,25 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item text-dark" href="{% url 'index' %}#products">Services</a></li>
                             <li><a class="dropdown-item text-dark" href="#">Academies</a></li>
-                            <li><a class="dropdown-item text-dark" href="#">Players</a></li>
+                            <li><a class="dropdown-item text-dark" href="{% url 'players' %}">Players</a></li>
                         </ul>
                     </li>
                     {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{% url 'admin_dashboard' %}"><i class="fab fa-dashboard"></i> Dashboard</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{% url 'player_dashboard' user.player.id %}"><i class="fa fa-tablet"></i> Dashboard</a>
+                        </li>
+                        {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link text-light" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'login' %}"><i class="fab fa-sign-in"></i> Login</a>
+                        <a class="nav-link text-light" href="{% url 'login' %}"><i class="far fa-user"></i> Login</a>
                     </li>
                     {% endif %}
                 </ul>

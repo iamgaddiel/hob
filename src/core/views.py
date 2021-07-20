@@ -22,7 +22,6 @@ from core.models import Player, Events
 class Index(TemplateView):
     template_name = 'core/index.html'
 
-
 class Login(LoginView):
     template_name = 'core/login.html'
     form_class = LoginForm
@@ -52,6 +51,10 @@ class DownloadBookingFormContract(View):
         content_type = "application/pdf"
         return FileResponse(open(CONTRACT_PATH, 'rb'), filename=filename, content_type=content_type, as_attachment=True)
 
+class PlayerList(ListView):
+    template_name = "core/players.html"
+    model = Player
+
 
 class PlayerDashboard(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "core/player_dashboard.html"
@@ -70,12 +73,17 @@ class PlayerDashboard(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
 # =======================================[ Admmin ] ===================================
 
-class AdminDashboard(TemplateView):
+class AdminDashboard(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "core/admin_dashboard.html"
+
+    def test_func(self) -> Optional[bool]:
+        if self.request.user.is_superuser:
+            return True
+        return super().test_func()
 
 
 # ===================== [ Admmin Player ]=======================
-class CreatePlayer(CreateView):
+class CreatePlayer(LoginRequiredMixin, CreateView):
     template_name = 'core/forms.html'
     queryset = Player.objects.all()
     success_url = reverse_lazy('admin_list_player')
@@ -110,7 +118,7 @@ class CreatePlayer(CreateView):
         return super().form_valid(form)
 
 
-class ListPlayers(ListView):
+class ListPlayers(LoginRequiredMixin, ListView):
     queryset = Player.objects.all()
     template_name = 'core/list.html'
     ordering = ['-id']
@@ -131,7 +139,7 @@ class GetPlayer(DetailView):
         context['dashboard_title'] = 'Player Profile'
         return context
 
-class SearchPlayers(View):
+class SearchPlayers(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         pass
 

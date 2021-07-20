@@ -2,25 +2,34 @@
 {% load static %}
 {% block content %}
 {% include 'core/includes/header.html' %}
-<main class="mt-5">
-    <section class="form-wrapper mt-5 pt-5">
-        <div class="form-content w-75 mx-auto">
-            <h1 class="h1">Login</h1>
-            <hr class="mb-4">
+<main class="mt-5 d-flex justify-content-center align-items-center h-100">
+    <section class="form-wrapper mt-5 pt-5 container p-5 " style="background-color: #fff;">
+        <div class="row justify-content-center align-items center">
+            <div class="col-sm-12 col-md-5">
+                <div class="login-image w-75 h-50 mx-auto">
+                    <img src="{% static 'images/undraw_mobile_login_ikmv.svg' %}" alt="login image" style="width: 100%; height: auto;" class="animate__animated animate__fadeInRight animaate__fast">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <div class="form-content w-75 mx-auto mt-4 animate__animated animate__zoomIn animaate__fast">
+                    <h1 class="h1 text-center">Login</h1>
+                    <hr class="mb-4">
 
-            <form action="" method="POST">
-                {% csrf_token %}
-                {% for field in form %}
-                <small class="text-danger">{{ field.errors }}</small>
-                <div class="form-floating mb-3">
-                    {{ field }}
-                    <label for="">{{ field.label }}</label>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <small class="text-danger">{{ field.errors }}</small>
+                        <div class="form-floating mb-3">
+                            {{ field }}
+                            <label for="">{{ field.label }}</label>
+                        </div>
+                        {% endfor %}
+                        <div class="form-group mt-4 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary w-75 rounded-5">Login</button>
+                        </div>
+                    </form>
                 </div>
-                {% endfor %}
-                <div class="form-group mt-4 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary w-75 rounded-5">Login</button>
-                </div>
-            </form>
+            </div>
         </div>
     </section>
 </main>

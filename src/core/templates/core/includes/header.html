@@ -17,11 +17,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{% url 'index' %}#about"><i class="fa fa-question"></i>
-                            About</a>
+                            About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'events_list' %}"><i class="far fa-calendar"></i>
-                            Event</a>
+                        <a class="nav-link text-light" href="{% url 'players' %}"><i class="fa fa-users"></i> Players</a>
+                        
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="#"><i class="fa fa-tv"></i> News</a>
@@ -34,7 +34,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item text-dark" href="{% url 'index' %}#products">Services</a></li>
                             <li><a class="dropdown-item text-dark" href="#">Academies</a></li>
-                            <li><a class="dropdown-item text-dark" href="{% url 'players' %}">Players</a></li>
+                            <a class="dropdown-item text-dark" href="{% url 'events_list' %}"><i class="far fa-calendar"></i>
+                                Event</a>
                         </ul>
                     </li>
                     {% if user.is_authenticated %}

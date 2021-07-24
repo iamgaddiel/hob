@@ -27,10 +27,11 @@ class Publicity(FormView):
         # store form detail to session
         form_data = self.request.POST
 
-        self.request.session["ACADEMY_PUBLICITY_DETAILS"] = form_data
-        self.request.session["PACKAGE_PRICE"] = form_data.get("price")
-        self.request.session["PUBLICITY_NAME"] = form_data.get('name')
-        self.request.session["PUBLICITY_PACKAGE"] = form_data.get('package')
+        self.request.session["FULL_DETAILS"] = form_data
+        self.request.session["PRICE"] = form_data.get("price")
+        self.request.session["NAME"] = form_data.get('name')
+        self.request.session["PACKAGE"] = form_data.get('package')
+        self.request.session["EMAIL"] = form_data.get('email')
 
         # print(self.kwargs.get('publicity_category'), self.kwargs.get("package"))
         return redirect("confirm_payment", package=self.kwargs.get("package"))
@@ -55,27 +56,29 @@ class Mentorship(CreateView):
         # store form detail to session
         form_data = self.request.POST
 
-        self.request.session["MENTORSHIP_DETAILS"] = form_data
-        self.request.session["PACKAGE_PRICE"] = form_data.get("price")
-        self.request.session["PUBLICITY_NAME"] = form_data.get('name')
-        self.request.session["PUBLICITY_PACKAGE"] = form_data.get('package')
+        self.request.session["FULL_DETAILS"] = form_data
+        self.request.session["PRICE"] = form_data.get("price")
+        self.request.session["NAME"] = form_data.get('name')
+        self.request.session["PACKAGE"] = form_data.get('package')
+        self.request.session["EMAIL"] = form_data.get('email')
         return super().form_valid(form)
 
 class ConfirmPayment(View):
     def get(self, request, *args,**kwargs):
         template_name = "services/checkout.html"
         context = {
-            "PACKAGE_PRICE": self.request.session.get("PACKAGE_PRICE"),
-            "PUBLICITY_NAME": self.request.session.get('PUBLICITY_NAME'),
-            "PUBLICITY_PACKAGE": self.request.session.get('PUBLICITY_PACKAGE'),
+            "PRICE": self.request.session.get("PRICE"),
+            "NAME": self.request.session.get('NAME'),
+            "PACKAGE": self.request.session.get('PACKAGE'),
             "PAYSTACK_PUBLIC_KEY": settings.PAYSTACK_PUBLIC_KEY,
+            "EMAIL": self.request.session.get('EMAIL')
         }
         return render(request, template_name, context)
 
 class PaymentCallback(View):
     def post(self, request, *args, **kwargs):
         payment_response = json.loads(request.body.decode('utf-8'))
-        academy_data = request.session.get("ACADEMY_PUBLICITY_DETAILS")
+        academy_data = request.session.get("FULL_DETAILS")
         academy = AcademyPulicity(
             name = academy_data.get('name'),
             email = academy_data.get('email'),

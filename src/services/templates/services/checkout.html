@@ -33,18 +33,23 @@
                     <h3 class="h3 text-muted">Checkout</h3>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="{{ PUBLICITY_NAME }}" id="name" name="name" class="checkout-input form-control"
-                        value="{{ PUBLICITY_NAME }}" disabled>
+                    <input type="text"  id="name" name="name" class="checkout-input form-control"
+                        value="{{ NAME }}" disabled>
                     <label for="">Name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="{{ PUBLICITY_PACKAGE }}" id="package" name="package" class="checkout-input form-control"
-                        value="{{ PUBLICITY_PACKAGE }}" disabled>
+                    <input type="text"  id="name" name="email" class="checkout-input form-control"
+                        value="{{ EMAIL}}" disabled>
+                    <label for="">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text"  id="package" name="package" class="checkout-input form-control"
+                        value="{{ PACKAGE }}" disabled>
                     <label for="">Package</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="{{ PACKAGE_PRICE }}" id="price" name="price" class="checkout-input form-control"
-                    value="{{ PACKAGE_PRICE }}" disabled>
+                    <input type="text" id="price" name="price" class="checkout-input form-control"
+                    value="{{ PRICE }}" disabled>
                     <label for="">Price</label>
                 </div>
                 <div class="form-group">
@@ -59,10 +64,12 @@
     checkoutForm.addEventListener('submit', function(event) {
         event.preventDefault()
         const key = "{{ PAYSTACK_PUBLIC_KEY }}"
-        const amount = parseInt("{{ PACKAGE_PRICE }}") * 100
-        const email = 'ighotagaddiel98@email.com'
-        const academy = "{{ PUBLICITY_NAME }}"
-        const duration = "{{ PUBLICITY_PACKAGE }}"
+        const amount = parseInt("{{ PRICE }}") * 1000
+        const email = '{{ EMAIL }}'
+        const academy = "{{ NAME }}"
+        const duration = "{{ PACKAGE }}"
+
+        console.log(key, amount, email, academy, duration)
         makePayment(key, email, amount)
     })
 

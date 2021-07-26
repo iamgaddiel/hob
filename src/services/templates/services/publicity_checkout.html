@@ -30,6 +30,7 @@
             <form class="checkout-form" id="checkoutForm" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
+                    {% block form_fields %}
                     <h3 class="h3 text-muted">Checkout</h3>
                 </div>
                 <div class="form-floating mb-3">
@@ -52,6 +53,7 @@
                     value="{{ PRICE }}" disabled>
                     <label for="">Price</label>
                 </div>
+                {% endblock form_fields %}
                 <div class="form-group">
                     <input type="submit" value="Proceed To Payment" class="checkout-submit btn h-50">
                 </div>
@@ -68,8 +70,8 @@
         const email = '{{ EMAIL }}'
         const academy = "{{ NAME }}"
         const duration = "{{ PACKAGE }}"
-
-        console.log(key, amount, email, academy, duration)
+        const testEndPoint = "{{ ENDPOINT }}"
+        console.log(testEndPoint)
         makePayment(key, email, amount)
     })
 
@@ -91,7 +93,7 @@
                 console.log(response)
                 console.log(response.trxref)
                 const baseURL = `${location.protocol}//${location.host}/`
-                const endPoint = `${baseURL}services/confirm/payment/${response.trxref}/`
+                const endPoint = `${baseURL}services/confirm/payment/`
                 let cookie = document.cookie
                 let csrfToken = cookie.substring(cookie.indexOf('=') + 1)
                 

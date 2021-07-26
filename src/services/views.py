@@ -33,9 +33,7 @@ class Publicity(FormView):
         self.request.session["PACKAGE"] = form_data.get('package')
         self.request.session["EMAIL"] = form_data.get('email')
 
-        # print(self.kwargs.get('publicity_category'), self.kwargs.get("package"))
         return redirect("confirm_payment", package=self.kwargs.get("package"))
-        # return super().form_valid(form)
 
 
 class DownloadPublicityContract():
@@ -63,15 +61,29 @@ class Mentorship(CreateView):
         self.request.session["EMAIL"] = form_data.get('email')
         return super().form_valid(form)
 
-class ConfirmPayment(View):
-    def get(self, request, *args,**kwargs):
-        template_name = "services/checkout.html"
+class MentorshipConfirmPayment(View):
+    def get(self, request, *args, **kwargs):
+        template_name = "services/mentorship_checkout.html"
         context = {
             "PRICE": self.request.session.get("PRICE"),
             "NAME": self.request.session.get('NAME'),
             "PACKAGE": self.request.session.get('PACKAGE'),
             "PAYSTACK_PUBLIC_KEY": settings.PAYSTACK_PUBLIC_KEY,
-            "EMAIL": self.request.session.get('EMAIL')
+            "EMAIL": self.request.session.get('EMAIL'),
+            "ENDPOINT": resolve_url("")
+        }
+        return render(request, template_name, context)
+
+class ConfirmPayment(View):
+    def get(self, request, *args,**kwargs):
+        template_name = "services/publicity_checkout.html"
+        context = {
+            "PRICE": self.request.session.get("PRICE"),
+            "NAME": self.request.session.get('NAME'),
+            "PACKAGE": self.request.session.get('PACKAGE'),
+            "PAYSTACK_PUBLIC_KEY": settings.PAYSTACK_PUBLIC_KEY,
+            "EMAIL": self.request.session.get('EMAIL'),
+            "ENDPOINT": resolve_url("")
         }
         return render(request, template_name, context)
 
@@ -94,9 +106,9 @@ class PaymentCallback(View):
             video_link_for_players = academy_data.get('video_link_for_players'),
             duration = request.session.get("PUBLICITY_PACKAGE")
         )
-        # academy.save()
-        # publicity = PublicityPayment(**payment_response)
-        # publicity.academy = academy
-        # publicity.save()
+        academy.save()
+        publicity = PublicityPayment(**payment_response)
+        publicity.academy = academy
+        publicity.save()
         return JsonResponse({"data": "success"})
 

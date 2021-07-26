@@ -1,0 +1,23 @@
+{% extends 'service/publicity_checkout.html' %}
+{% block form_fields %}
+<div class="form-floating mb-3">
+    <input type="text"  id="name" name="name" class="checkout-input form-control"
+        value="{{ NAME }}" disabled>
+    <label for="">Name</label>
+</div>
+<div class="form-floating mb-3">
+    <input type="text"  id="name" name="email" class="checkout-input form-control"
+        value="{{ EMAIL}}" disabled>
+    <label for="">Email</label>
+</div>
+<div class="form-floating mb-3">
+    <input type="text"  id="package" name="package" class="checkout-input form-control"
+        value="{{ PACKAGE }}" disabled>
+    <label for="">Package</label>
+</div>
+<div class="form-floating mb-3">
+    <input type="text" id="price" name="price" class="checkout-input form-control"
+    value="{{ PRICE }}" disabled>
+    <label for="">Price</label>
+</div>
+{% endblock form_fields %}

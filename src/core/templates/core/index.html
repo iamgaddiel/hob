@@ -10,7 +10,7 @@
                     <ul class="splide__list">
                         <li class="splide__slide">
                             <div class="splide__slide__container">
-                                <img src="{% static 'images/pexels-pixabay-47730.jpg' %}" loading="lazy">
+                                <img src="https://ik.imagekit.io/darrlqkbs4a/pexels-pixabay-47730_-ALB5F9cuh.jpg?updatedAt=1626129135036" loading="lazy">
                                 <div class="banner-text">
                                     <div>
                                         <h1 class="display-2 text-light text-uppercase text-center">Home</h1>
@@ -58,20 +58,20 @@
     </section>
 
     <!-- products and services -->
-    <section class="products pt-5" id="products">
-        <div class="product-content pt-5">
+    <section class="products pt-2" id="products">
+        <div class="product-content">
             <!-- Mentorship  -->
             <section class="mentorship container">
                 <h2 class="text-center h2 text-dark animate__animated animate__zoomIn text-uppercase">Mentorship
                     Program</h2>
-                <div class="row justify-content-center align-items-center mt-5" style="overflow: hidden;">
+                <div class="row justify-content-center align-items-center" style="overflow: hidden;">
                     <div class="col-sm-12 col-md-3">
                         <div class="card contract-card mt-5">
                             <div class="card-body mt-5">
                                 <div class="figure-heading d-flex justify-content-center">
                                     <h4 class="text-dark text-center display-1">3</h4>
                                 </div>
-                                <ul class="list-group-list list-group-flush">
+                                <ul class="list-group-list list-group-flush p-0">
                                     <li class="list-group-item">
                                         <h4 class="h4 text-dark text-center">Months</h4>
                                     </li>
@@ -81,7 +81,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer d-flex justify-content-center bg-primary">
-                                <a href="{% url 'mentorship' '3-months' %}" class="btn btn-light w-50  mx-auto">
+                                <a href="{% url 'mentorship' '3-months' %}" class="btn btn-light p-0 w-50  mx-auto">
                                     View
                                 </a>
                             </div>
@@ -93,7 +93,7 @@
                                 <div class="figure-heading d-flex justify-content-center">
                                     <h4 class="text-dark text-center display-1">6</h4>
                                 </div>
-                                <ul class="list-group-list list-group-flush">
+                                <ul class="list-group-list list-group-flush p-0">
                                     <li class="list-group-item">
                                         <h3 class="h4 text-dark text-center">Months</h3>
                                     </li>
@@ -103,7 +103,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer d-flex justify-content-center bg-primary">
-                                <a href="{% url 'mentorship' '6-months' %}" class="btn btn-light w-50  mx-auto">
+                                <a href="{% url 'mentorship' '6-months' %}" class="btn btn-light w-50 p-0  mx-auto">
                                     View
                                 </a>
                             </div>
@@ -115,7 +115,7 @@
                                 <div class="figure-heading d-flex justify-content-center">
                                     <h4 class="text-dark text-center display-1">1</h4>
                                 </div>
-                                <ul class="list-group-list list-group-flush">
+                                <ul class="list-group-list list-group-flush p-0">
                                     <li class="list-group-item">
                                         <h3 class="h4 text-dark text-center">Year</h3>
                                     </li>
@@ -125,7 +125,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer d-flex justify-content-center bg-primary">
-                                <a href="{% url 'mentorship' '1-year' %}" class="btn btn-light w-50 mx-auto">
+                                <a href="{% url 'mentorship' '1-year' %}" class="btn btn-light w-50 p-0 mx-auto">
                                     View
                                 </a>
                             </div>
@@ -178,7 +178,7 @@
                 <div class="contract-content container">
                     <h2 class="text-center text-uppercase h3 text-dark">Publicity Contract</h2>
                     <!-- Academies -->
-                    <div class="row justify-content-center mt-5">
+                    <div class="row justify-content-center">
                         <div class="col-sm-12 col-md-4 mt-2 mt-4">
                             <div class="card contract-card animate__animated animate__fadeInUp text-primary">
                                 <div class="card-header text-muted text-center bg-primary">
@@ -283,7 +283,7 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="about-text-wrapper p-5">
                                 <h3 class="h3 text-muted text-center">Booking</h3>
-                                <p class="text-muted text-justified animate__animated animate__fadeInLeft"
+                                <p class="text-muted text-justified animate__animated animate__fadeInLeft text-center"
                                     style="line-height: 2.5rem;">
                                     If you intend inviting Chidi J. Myles for a speaking engagement, depending on the
                                     engagement
@@ -292,7 +292,7 @@
                                     all
                                     logistics are taken care of by organizers.
                                 </p>
-                                <div class="download-btn">
+                                <div class="download-btn d-flex justify-content-center">
                                     <a href="{% url 'download_booking_form' %}" class="rounded-btn-fill">
                                         <i class="fa fa-download"></i>
                                         download contract
@@ -313,6 +313,6 @@
 
 </main>
 <footer class="bg-primary d-flex justify-content-center f-3">
-    <p class="text-center mt-3"><a href="https://www.homeofballers.com/" class="text-light nav-link">&copy; <script>document.write(new Date().getFullYear())</script> Homeofballer</a></p>
+    <p class="text-center mt-3"><a href="https://www.homeofballers.com/" class="text-light nav-link">&copy; <script>document.write(new Date().getFullYear())</script> Home Of Baller</a></p>
 </footer>
 {% endblock %}

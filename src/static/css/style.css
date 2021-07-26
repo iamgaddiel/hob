@@ -81,7 +81,7 @@ nav a {
 
 /* Education */
 .education {
-  background-image: url("/static/images/mic.jpg");
+  background-image: url("https://ik.imagekit.io/darrlqkbs4a/mic_076VTQjcNF.jpg?updatedAt=1626129142984");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -129,7 +129,7 @@ nav a {
 @media(max-width: 576px){
   .contract-card {
     margin: 20px 0px;
-    height: 60vh !important;
+    height: 55vh !important;
     width: 70% !important;
     margin: auto;
   }
@@ -137,7 +137,7 @@ nav a {
 
 /* consultations */
 .consultation {
-  background-image: url("/static/images/consult.jpg");
+  background-image: url("https://ik.imagekit.io/darrlqkbs4a/consult_K1x9uKPVf.jpg?updatedAt=1627314976517");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

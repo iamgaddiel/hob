@@ -6,12 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css.map' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidenav.css' %}">
-    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'css/splide.min.css' %}">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
 
     <!-- favicon -->
@@ -37,19 +37,20 @@
 
 <body>
     {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-primary">
-                <p>{{ message }}</p>
-            </div>
-        {% endfor %}
+    {% for message in messages %}
+    <div class="alert alert-primary">
+        <p>{{ message }}</p>
+    </div>
+    {% endfor %}
     {% endif %}
     {% block content %}{% endblock %}
 
     <!-- js -->
-    <script src="{% static 'js/jquery3.6.0.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js.map' %}"></script>
-    <script src="{% static 'js/splide.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
     <script src="{% static 'js/app.js' %}"></script>
     <script>
         new Splide('.splide', {
@@ -62,9 +63,7 @@
             height: '100vh'
         }).mount();
     </script>
-    <script src="{% static 'js/sidenav.js' %}"></script>
-    <script src='https://js.paystack.co/v1/inline.js'></script> 
+    <script src="{% static 'js/sidenav_overlay.js' %}"></script>
+    <script src='https://js.paystack.co/v1/inline.js'></script>
     {% block scripts %}{% endblock scripts %}
 </body>
-
-</html>

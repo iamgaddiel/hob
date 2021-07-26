@@ -13,10 +13,6 @@ body {
   background: var(--light);
 }
 
-.splide__arrow splide__arrow--next,
-.splide__arrow splide__arrow--prev{
-  opacity: 1;
-}
 
 /* nav */
 nav {
@@ -68,6 +64,11 @@ nav a {
   height: auto;
 }
 
+.hero-tex{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
 /* Products */
 .products {
   padding: 30px 0px;
@@ -113,11 +114,6 @@ nav a {
 .contract {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  /* background: var(--dark); */
-  /* height: 80vh; */
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 }
 .contract-card {
   border: none;

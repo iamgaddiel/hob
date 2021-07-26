@@ -13,6 +13,11 @@ body {
   background: var(--light);
 }
 
+.splide__arrow splide__arrow--next,
+.splide__arrow splide__arrow--prev{
+  opacity: 1;
+}
+
 /* nav */
 nav {
   width: 100%;
@@ -20,9 +25,6 @@ nav {
   height: 70px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  /* background: blue; */
-  /* position: static;
-  top: 0; */
 }
 nav a {
   color: blue !important;
@@ -120,9 +122,17 @@ nav a {
 .contract-card {
   border: none;
   border-radius: 10px;
-  box-shadow: 2px 2px 10px #e7e7e7;
+  box-shadow: 2px 2px 10px #bbb;
   height: 70vh;
   overflow: hidden;
+}
+@media(max-width: 576px){
+  .contract-card {
+    margin: 20px 0px;
+    height: 60vh !important;
+    width: 70% !important;
+    margin: auto;
+  }
 }
 
 /* consultations */

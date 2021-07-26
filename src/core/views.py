@@ -46,8 +46,8 @@ class DownloadPublicityContract(View):
 
 class DownloadBookingFormContract(View):
     def get(self, request, *args, **kwargs):
-        CONTRACT_PATH = os.path.join(settings.MEDIA_ROOT, 'Speakers Booking Form.doc')
-        filename = "HSpeakers_Booking_Form.doc.pdf"
+        CONTRACT_PATH = os.path.join(settings.MEDIA_ROOT, 'Speakers Booking Form.pdf')
+        filename = "HSpeakers_Booking_Form.pdf"
         content_type = "application/pdf"
         return FileResponse(open(CONTRACT_PATH, 'rb'), filename=filename, content_type=content_type, as_attachment=True)
 

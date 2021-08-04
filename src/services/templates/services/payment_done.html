@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'core/includes/header.html' %}
+
+<section class="main">
+    <div class="payment__wrapper">
+        <div class="payment__content">
+            <div class="payment__image">
+                <img src="{% static 'images/icanim.gif' %}" alt="check gif">
+            </div>
+            <div class="payment__actions">
+                <h4 class="h4 text-center">Payment completed successfully</h4>
+                <a href="{% url 'index' %}" class="download-btn nav-link text-center">
+                    <i class="fa fa-home"></i>
+                    Take Me Home
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

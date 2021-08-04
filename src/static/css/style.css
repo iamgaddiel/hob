@@ -69,6 +69,23 @@ nav a {
 
 }
 
+.us_list_group li small{
+  margin-left: 5px;
+}
+
+/* who we are */
+@media(max-width: 576px){
+  .us_list_group li{
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .us_list_group li small{
+    margin-left: 0px;
+  }
+}
+
 /* Products */
 .products {
   padding: 30px 0px;
@@ -125,7 +142,7 @@ nav a {
 @media(max-width: 576px){
   .contract-card {
     margin: 20px 0px;
-    height: 55vh !important;
+    height: 40vh !important;
     width: 70% !important;
     margin: auto;
   }
@@ -153,7 +170,7 @@ nav a {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.60);
 }
 
 /* Form */
@@ -313,4 +330,18 @@ nav a {
 .event-card-text{
   position: absolute;
   bottom: 20px;
+}
+
+/* Payment Complete Check */
+.payment__wrapper{
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.payment__image img{
+  width: 20rem;
+  height: auto;
 }

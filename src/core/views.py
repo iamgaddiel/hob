@@ -17,6 +17,7 @@ from django.contrib.auth.hashers import make_password
 
 from core.forms import EventCreationForm, LoginForm, PlayerCreationForm
 from core.models import Player, Events
+from services.models import PlayerMentorship
 
 
 class Index(TemplateView):
@@ -176,8 +177,6 @@ class AdminGetEvent(DetailView):
 
 
 # ============================== [ Events ] ========================================
-
-    
 class EventsList(ListView):
     model = Events
     template_name = "core/events.html"
@@ -187,3 +186,16 @@ class EventDetail(DetailView):
     model = Events
     context_object_name = "event"
 
+
+# ============================== [ Mentorship ] ========================================
+class ListMentorships(ListView):
+    template_name = "core/list.html"
+    model = PlayerMentorship
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["list_type"] = "mentorship"
+        return context
+
+class MentorshipDetails(DetailView):
+    pass

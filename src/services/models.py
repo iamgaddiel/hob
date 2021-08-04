@@ -15,20 +15,20 @@ class AcademyPulicity(models.Model):
         ('1 year', '1-year'),
     ]
 
-    name = models.CharField(max_length=100, unique=True)
-    email = models.EmailField(unique=True, blank=True)
+    name = models.CharField(max_length=100,)
+    email = models.EmailField(default="")
     profile_image = models.ImageField(default="academy.png", upload_to="academy_profile_image%Y%m%d")
-    video_link = models.CharField(max_length=50)
-    facility_image_1 = models.ImageField(default="facility.png", upload_to="academy_facilities%Y%m%d", blank=True)
-    facility_image_2 = models.ImageField(default="facility.png", upload_to="academy_facilities%Y%m%d", blank=True)
-    facility_image_3 = models.ImageField(default="facility.png", upload_to="academy_facilities%Y%m%d", blank=True)
-    facility_image_4 = models.ImageField(default="facility.png", upload_to="academy_facilities%Y%m%d", blank=True)
-    facility_image_5 = models.ImageField(default="facility.png", upload_to="academy_facilities%Y%m%d", blank=True)
-    tournaments = models.TextField(blank=True, help_text="tournaments attended by this academy")
-    awards = models.TextField(help_text="Enter each award on a new line")
-    benefited_players = models.TextField(blank=True, help_text="players who got contracts from this academy")
-    video_link_for_players = models.CharField(max_length=200, unique=True)
-    duration = models.CharField(max_length=10)
+    video_link = models.CharField(max_length=50, default="")
+    facility_image_1 = models.ImageField(default="facility.png", upload_to="academy_facilities%Y%m%d")
+    facility_image_2 = models.ImageField(default="facility.png", upload_to="academy_facilities%Y%m%d")
+    facility_image_3 = models.ImageField(default="facility.png", upload_to="academy_facilities%Y%m%d")
+    facility_image_4 = models.ImageField(default="facility.png", upload_to="academy_facilities%Y%m%d")
+    facility_image_5 = models.ImageField(default="facility.png", upload_to="academy_facilities%Y%m%d")
+    tournaments = models.TextField(blank=True, help_text="tournaments attended by this academy", default="")
+    awards = models.TextField(help_text="Enter each award on a new line", default="")
+    benefited_players = models.TextField(blank=True, help_text="players who got contracts from this academy", default="")
+    video_link_for_players = models.CharField(max_length=200, default="")
+    duration = models.CharField(max_length=10, default="")
     timestamp = models.DateTimeField(auto_now=timezone.now)
 
     def __str__(self) -> str:
@@ -53,9 +53,8 @@ class PublicityPayment(models.Model):
     timestamp = models.DateTimeField(auto_now=timezone.now)
 
     def __str__(self) -> str:
-        return "{0} | package: {1}| status: {2} | time: {3}".format(
+        return "{0} | status: {1} | time: {2}".format(
             self.academy,
-            self.package,
             self.status,
             self.timestamp
         )
@@ -93,7 +92,37 @@ class PlayerMentorship(models.Model):
     email = models.EmailField()
     position_of_play = models.CharField(max_length=2, choices=POSITION)
     footbal_level = models.CharField(max_length=12, choices=FOOTBALL_LEVEL)
+    timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return super().__str__()
+        return f"{self.first_name} {self.last_name}"
 
+class MentorshipPayment(models.Model):
+
+    DURATION = [
+        ('3 months', '3-months'),
+        ('6 months', '6-months'),
+        ('1 year', '1-year'),
+    ]
+
+    player = models.ForeignKey(PlayerMentorship, on_delete=models.CASCADE)
+    unique_code = models.CharField(max_length=20, unique=True, editable=False)
+    amount = models.CharField(max_length=50)
+    email = models.EmailField(blank=True)
+    ref = models.CharField(max_length=20)
+    transaction = models.CharField(max_length=20, unique=True)
+    txref = models.CharField(max_length=20, unique=True, blank=True)
+    status = models.CharField(max_length=10)
+    duration = duration = models.CharField(max_length=10, choices=DURATION)
+    timestamp = models.DateTimeField(auto_now=timezone.now)
+
+    def __str__(self) -> str:
+        return "{0} | status: {1} | time: {2}".format(
+            self.player.first_name,
+            self.status,
+            self.timestamp
+        )
+
+
+class Consultations(models.Model):
+    pass

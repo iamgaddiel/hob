@@ -10,28 +10,6 @@
             Football Career dreams. Please carefully read this application. Make sure the information you provide is
             complete and accurate. Do well to read through each program to fully understand before filling the form.
         </p>
-
-        {% if package == '3-months' %}
-        <h4 class="h4">3 Months Mentorship Program</h4>
-        <ol class="list-group list-group-flush p-0">
-            <li class="list-group-item">Free social media promotion/ Publicity</li>
-            <li class="list-group-item">Free Professional Media Page Set up </li>
-            <li class="list-group-item">Free Access to the HOBS Career Guide Materials</li>
-            <li class="list-group-item">Access to the Daily Football Career Guide Broadcast</li>
-            <li class="list-group-item">Football CV Setup</li>
-        </ol>
-        {% elif package == '6-months' %}
-        <h4 class="h4">6 Months Mentorship Program</h4>
-        <ol class="list-group list-group-flush p-0">
-            <li class="list-group-item">Free social media promotion/ Publicity</li>
-            <li class="list-group-item">Free Professional Media Page Set up </li>
-            <li class="list-group-item">Free Access to the HOBS Career Guide Materials</li>
-            <li class="list-group-item">Access to the Daily Football Career Guide Broadcast</li>
-            <li class="list-group-item">Football CV Setup</li>
-            <li class="list-group-item">Access to Join HOBS for Trial Programs</li>
-            <li class="list-group-item">Professional profile on the HOBS official website</li>
-        </ol>
-        {% elif package == '1-year' %}
         <h4 class="h4"> 1 Year Mentorship Program</h4>
         <ol class="list-group list-group-flush p-0">
             <li class="list-group-item">Free social media promotion/ Publicity</li>
@@ -42,39 +20,32 @@
             <li class="list-group-item">Access to Join HOBS for Trial Programs</li>
             <li class="list-group-item">Professional profile on the HOBS official website</li>
             <li class="list-group-item">layer will be part of HOBS Video Projects.</li>
-            <li class="list-group-item">One on one meeting with Chidi J. Myleyles ( Football Consultant)</li>
+            <li class="list-group-item">One on one meeting with Chidi J. Myles ( Football Consultant)</li>
+            <li class="list-group-item">Player earns $7.5 on connection bonus on each baller he or she connects to Home Of Ballers.</li>
+            <li class="list-group-item">Player earns $37.5 on kits bonus on connecting 10 players to Home Of Ballers. This bonus is used to purchase football kits.</li>
+            <li class="list-group-item">Player earns $225 on flight bonus on connecting 50 players to Home Of Ballers.
+            </li>
+            
         </ol>
-        {% endif %}
     </section>
-    
-    <!-- <section class="formfooter mt-3">
-        <p>
-            (Players who can't make direct payment with there credit card can send money to the account 
-            <b><i>Chidi Godstime 2140400045 UBA Bank</i></b> Though we are waiting for our CAC certificate so we can get our official
-            bank account.
-        </p>
-        <p>
-            Those who make payment through bank should send proof of payment to <b><i>homeofballers1@gmail.com</i></b> or
-            <b><i>+2348027992764 on WhatsApp</i></b>.
-        </p>
-    </section> -->
-    <div class="form-wrapper mt-5 px-5 py-4">
+    <section class="form-wrapper mt-5 px-5 py-4">
         <form method="post">
             {% csrf_token %}
             {% for field in form %}
-            <div class="form-floating mt-3">
+            <div class="form-floating mt-3 rounded">
                 {{ field }}
                 <label for="" class="lead">{{ field.label }}</label>
             </div>
             {% endfor %}
             <div class="form-group">
-                <input type="hidden" name="package" value="{{ package }}">
+                <input type="hidden" name="duration" value="{{ duration }}">
+                <input type="hidden" name="price" value="50">
             </div>
             <div class="d-flex justify-content-center mt-5">
                 <button type="submit" class="btn btn-primary w-75">Make Payment</button>
             </div>
         </form>
-    </div>
+    </section>
 
 </section>
 {% endblock content %}

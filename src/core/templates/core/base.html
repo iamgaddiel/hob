@@ -51,7 +51,9 @@
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script src='https://js.paystack.co/v1/inline.js'></script>
     <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/sidenav_overlay.js' %}"></script> 
     <script>
         new Splide('.splide', {
             direction: 'ltr',
@@ -63,7 +65,5 @@
             height: '100vh'
         }).mount();
     </script>
-    <script src="{% static 'js/sidenav_overlay.js' %}"></script>
-    <script src='https://js.paystack.co/v1/inline.js'></script>
     {% block scripts %}{% endblock scripts %}
 </body>

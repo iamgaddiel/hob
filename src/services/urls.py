@@ -1,10 +1,19 @@
 from django.urls import path
-from .views import Mentorship, Publicity, ConfirmPayment, PaymentCallback
+from .views import (
+    Mentorship, 
+    Publicity, 
+    ConfirmPublicityPayment, 
+    # PublicityPaymentCallback,
+    PaymentDone,
+    MentorshipConfirmPayment,
+)
 
 
 urlpatterns = [
-    path('mentorship/<str:package>/', Mentorship.as_view(), name='mentorship'),
+    path('mentorship/<str:duration>/', Mentorship.as_view(), name='mentorship'),
+    path('confrim/mentorship/', MentorshipConfirmPayment.as_view(), name='mentorship_confirm'),
     path('publicity/academy/<str:package>/<int:price>/', Publicity.as_view(), name='academy_publicity'),
-    path('confirm/academy/<str:package>/', ConfirmPayment.as_view(), name='confirm_payment'),
-    path('confirm/payment/', PaymentCallback.as_view(), name='payment_response'),
+    path('confirm/academy/', ConfirmPublicityPayment.as_view(), name='confirm_payment'),
+    # path('confirm/payment/', PublicityPaymentCallback.as_view(), name='publicity_payment_response'),
+    path('payment/done/', PaymentDone.as_view(), name='payment_done'),
 ]

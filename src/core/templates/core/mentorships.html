@@ -69,32 +69,6 @@
                             </div>
                         </a>
                     </li>
-                    {% elif list_type == 'mentorship' %}
-                    <li class="list-group-item">
-                        <a href="{% url 'admin_get_event' object.pk %}" class="nav-link p-0">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-sm-12 col-md-9">
-                                    <div class="lhs d-flex align-items-center">
-                                        <div class="player-detail">
-                                            <div class="d-flex w-100">
-                                                <div class="lhs">
-                                                    <b class="text-dark">{{ object.first_name }} {{ object.last_name }} </b> <br>
-                                                    <small class="text-muted">{{ object.kickoff_date }}</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col">
-                                    <div class="rhs">
-                                        <small class="text-muted text-end" style="font-size: xx-small;">
-                                            {{ object.timestamp }}
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
                     {% endif %}
                     {% empty %}
                     <li class="list-group-item">

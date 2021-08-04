@@ -4,7 +4,7 @@
 {% include 'core/includes/header.html' %}
 <style>
     .checkout-form {
-        width: 80vw;
+        width: 60vw;
         padding: 20px;
         background: #fff;
     }
@@ -27,7 +27,7 @@
     <!-- products and services -->
     <section class="checkout-wrapper pt-5" id="products">
         <div class="checkout-content d-flex justify-content-center align-items-center" style="height: 90vh;">
-            <form class="checkout-form" id="checkoutForm" method="POST">
+            <form class="checkout-form" id="checkoutForm" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                     {% block form_fields %}
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" id="price" name="price" class="checkout-input form-control"
-                    value="{{ PRICE }}" disabled>
+                    value="${{ PRICE }}" disabled>
                     <label for="">Price</label>
                 </div>
                 {% endblock form_fields %}
@@ -66,21 +66,22 @@
     checkoutForm.addEventListener('submit', function(event) {
         event.preventDefault()
         const key = "{{ PAYSTACK_PUBLIC_KEY }}"
-        const amount = parseInt("{{ PRICE }}") * 1000
+        const amount = parseInt("{{ PRICE }}") * 400 * 100
         const email = '{{ EMAIL }}'
         const academy = "{{ NAME }}"
         const duration = "{{ PACKAGE }}"
-        const testEndPoint = "{{ ENDPOINT }}"
-        console.log(testEndPoint)
-        makePayment(key, email, amount)
+        const relEndPoint = "{{ CALLBACK_ENDPOINT }}" //relative endpoint
+        console.log(relEndPoint, email, key, amount, academy, duration)
+        makePayment(key, email, amount, academy, duration, relEndPoint)
     })
 
-    function makePayment(key, email, amount, ref, academy, duration) {
+    function makePayment(key, email, amount, academy, duration, relEndPoint, ref) {
+        ref = ref || parseInt(Math.random() * 10000)
         var handler = PaystackPop.setup({
             key: key, // This is your public key only! 
             email: email, // Customers email
             amount: amount,
-            ref: ref || parseInt(Math.random() * 10000),
+            ref: ref,
             metadata: { // More custom information about the transaction
                 custom_fields: [
                     {
@@ -90,10 +91,8 @@
                 ]
             },
             callback: function (response) {
-                console.log(response)
-                console.log(response.trxref)
-                const baseURL = `${location.protocol}//${location.host}/`
-                const endPoint = `${baseURL}services/confirm/payment/`
+                const baseURL = `${location.protocol}//${location.host}`
+                const endPoint = `${baseURL}${relEndPoint}`
                 let cookie = document.cookie
                 let csrfToken = cookie.substring(cookie.indexOf('=') + 1)
                 
@@ -107,6 +106,9 @@
                             "status": response.status,
                             "duration": duration,
                             "transaction" : response.transaction,
+                            "amount" : amount,
+                            "ref" : ref,
+                            "trxref" : response.trxref
                         }),
                         credentials : 'include', 
                         credentials : 'same-origin', 
@@ -115,7 +117,10 @@
                         }
                     })
                     .then( data => data.json())
-                    .then( res => {
+                    .then((res) => {
+                        if (res.data) {
+                            setTimeout(() => location.href = "{{ SUCCESS_URL }}", 1000)
+                        }
                         console.log(res)
                     })
                 }

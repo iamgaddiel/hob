@@ -20,6 +20,7 @@ from .views import (
     Dispatcher,
     PlayerDashboard,
     PlayerList,
+    ListMentorships,
 )
 
 urlpatterns = [
@@ -43,4 +44,6 @@ urlpatterns = [
     path('root/list/player/', ListPlayers.as_view(), name="admin_list_player"),
     path('root/get/player/<pk>/', GetPlayer.as_view(), name="admin_get_player"),
     path('services/', include('services.urls')),
+    # ======================  [ Mentorship ] =====================================
+    path('mentorships/', ListMentorships.as_view(), name="mentorship"),
 ]

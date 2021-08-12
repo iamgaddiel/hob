@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import CharField
 from django.utils import timezone
 
 
@@ -91,7 +92,7 @@ class PlayerMentorship(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
     position_of_play = models.CharField(max_length=2, choices=POSITION)
-    footbal_level = models.CharField(max_length=12, choices=FOOTBALL_LEVEL)
+    football_level = models.CharField(max_length=12, choices=FOOTBALL_LEVEL)
     timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
@@ -124,5 +125,14 @@ class MentorshipPayment(models.Model):
         )
 
 
-class Consultations(models.Model):
-    pass
+class EducationPayments(models.Model):
+    phone_number = CharField(max_length=15, unique=True)
+    registration_date = models.DateField(auto_now=True)
+    expiration_date = models.DateField(auto_now=True, blank=True)
+
+    def __str__(self) -> str:
+        return super().__str__()
+
+    #TODO : create a method that checks for expiration date
+    # def check_expiration(self):
+    #     return False

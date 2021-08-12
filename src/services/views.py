@@ -8,16 +8,18 @@ from django.db import IntegrityError
 from core.utils import get_coupon_code
 
 from services.forms import MentorshipForm, AcademyPulicityForm
-from services.models import AcademyPulicity, PlayerMentorship, PublicityPayment, MentorshipPayment
+from services.models import AcademyPulicity, EducationPayments, PlayerMentorship, PublicityPayment, MentorshipPayment
 
 import json
 
 
 
 
-class DownloadPublicityContract():
-    pass
-
+class EducationRegistration(View):
+    def post(self, request, *args, **kwargs):
+        details = json.loads(request.decode('utf-8'))
+        EducationPayments.objects.create(phone_number=details.get('phone_number'))
+        return JsonResponse({"data": "success"}, status=201)
 
 class Mentorship(FormView):
     template_name = "services/mentorship.html"

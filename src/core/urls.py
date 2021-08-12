@@ -21,6 +21,7 @@ from .views import (
     PlayerDashboard,
     PlayerList,
     ListMentorships,
+    MentorshipDetails
 )
 
 urlpatterns = [
@@ -45,5 +46,6 @@ urlpatterns = [
     path('root/get/player/<pk>/', GetPlayer.as_view(), name="admin_get_player"),
     path('services/', include('services.urls')),
     # ======================  [ Mentorship ] =====================================
-    path('mentorships/', ListMentorships.as_view(), name="mentorship"),
+    path('mentorships/', ListMentorships.as_view(), name="admin_mentorship_list"),
+    path('mentorship/detail/<int:pk>/', MentorshipDetails.as_view(), name="admin_mentorship_detail")
 ]

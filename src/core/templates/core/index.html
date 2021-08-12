@@ -10,6 +10,24 @@
                     <ul class="splide__list">
                         <li class="splide__slide">
                             <div class="splide__slide__container">
+                                <img src="https://ik.imagekit.io/darrlqkbs4a/pexels-pixabay-47730_-ALB5F9cuh.jpg?updatedAt=1626129135036"
+                                    loading="lazy">
+                                <div class="banner-text">
+                                    <div class="container">
+                                        <h1 class="display-1 text-light text-uppercase text-center">Home <br>of <br>baller </h1>
+                                        <p class="text-center text-light mt-5 hero-text">
+                                            <a href="#about" class="text-light">
+                                                <i
+                                                    class="fa fa-arrow-circle-down fa-2x animate__animated animate__bounce animate__repeat-3">
+                                                </i>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="splide__slide__container">
                                 <img src="https://ik.imagekit.io/darrlqkbs4a/1_zs3lFGnth.jpg?updatedAt=1627316504045"
                                     loading="lazy">
                                 <div class="banner-text">
@@ -106,7 +124,7 @@
             <div class="row justify-content-evenly align-items-center">
                 <div class="col-sm-12 col-md-6">
                     <div class="about-text-wrapper">
-                        <h3 class="h3 text-muted text-center order-md-12">Who We Are</h3>
+                        <h3 class="h3 text-muted text-center order-md-12">What We Do</h3>
                         <ul class="text-muted animate__animated animate__fadeInRight text-center us_list_group"
                             style="line-height: 2.5rem;">
                             <li class="d-flex justify-content-center text-muted align-items-center">
@@ -193,6 +211,7 @@
                         </p>
                         <div class="pay-btn-wrapper d-flex justify-content-center align-items-center mt-4">
                             <a href=""
+                                id="educationBtn"
                                 class="btn btn-secondary rounded-left rounded-right rounded-top rounded-bottom w-50">
                                 Get Started
                             </a>
@@ -233,7 +252,7 @@
                                 <div class="card-body pt-4">
                                     <div class="border rounded-circle d-flex align-items-center justify-content-center"
                                         style="height: 100px; width: 100px; margin: auto;">
-                                        <p class="text-center h2 text-primary">$372</p>
+                                        <p class="text-center h2 text-primary">$125</p>
                                     </div>
                                     <div class="publicity-duration mt-4">
                                         <p class="p-0 m-0 text-center text-primary h4">1</p>
@@ -271,7 +290,7 @@
                             one on
                             one consultation service.
                         </p>
-                        <a href="" class="btn btn-light">
+                        <a href="" class="btn btn-light" id="consultBtn">
                             Get Started
                         </a>
                     </div>
@@ -313,11 +332,18 @@
             </section>
         </div>
     </section>
-
 </main>
-<footer class="bg-primary d-flex justify-content-center f-3">
-    <p class="text-center mt-3"><a href="https://www.homeofballers.com/" class="text-light nav-link">&copy;
-            <script>document.write(new Date().getFullYear())</script> Home Of Baller
-        </a></p>
+<footer class="bg-primary d-flex justify-content-center f-3 pt-4 pb-4">
+    <div>
+        <span class="text-center mt-3"><a href="https://www.homeofballers.com/" class="text-light nav-link">&copy;
+                <script>document.write(new Date().getFullYear())</script> Home Of Baller
+            </a>
+        </span>
+        <div class="links d-flex justify-content-around">
+            <a href="https://www.facebook.com/homeofballers1/" target="_blank"><i class="fab fa-facebook text-light fa-2x"></i></a>
+            <a href="https://www.instagram.com/homeofballer1/" target="_blank"><i class="fab fa-instagram text-light fa-2x"></i></a>
+            <a href="https://t.me/homeofballers1" target="_blank"><i class="fab fa-telegram text-light fa-2x"></i></a>
+        </div>
+    </div>
 </footer>
 {% endblock %}

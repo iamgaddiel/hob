@@ -17,7 +17,7 @@ from django.contrib.auth.hashers import make_password
 
 from core.forms import EventCreationForm, LoginForm, PlayerCreationForm
 from core.models import Player, Events
-from services.models import PlayerMentorship
+from services.models import MentorshipPayment, PlayerMentorship
 
 
 class Index(TemplateView):
@@ -195,7 +195,21 @@ class ListMentorships(ListView):
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["list_type"] = "mentorship"
+        context['dashboard_title'] = 'Mentorships'
         return context
 
-class MentorshipDetails(DetailView):
-    pass
+class MentorshipDetails(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = PlayerMentorship
+    template_name = "core/mentorship_detail.html"
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        mentorship_detail = self.get_object()
+        context = super().get_context_data(**kwargs)
+        context["payment"] =  MentorshipPayment.objects.get(player=mentorship_detail)
+        context['dashboard_title'] = f"{mentorship_detail.first_name} {mentorship_detail.last_name}"
+        return context
+
+    def test_func(self) -> Optional[bool]:
+        if self.request.user.is_superuser:
+            return True
+        return False

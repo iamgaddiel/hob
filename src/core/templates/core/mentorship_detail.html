@@ -1,0 +1,47 @@
+{% extends 'core/admin_dashboard.html' %}
+{% load static %}
+{% block admin_content %}
+<main class="mt-5 container-fluid floating-abs">
+    <section class="list-wrapper pt-5">
+        <div class="list-wrapper-content">
+            <div class="list container mt-3">
+                <div class="card">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush p-0">
+                                <li class="list-group-item">
+                                    <small class="text-muted">First Name</small><br>
+                                    <h6 class="h6">{{ object.first_name }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Middle Name</small><br>
+                                    <h6 class="h6">{{ object.middle_name }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Last Name</small><br>
+                                    <h6 class="h6">{{ object.last_name }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Duration</small><br>
+                                    <h6 class="h6">{{ object.duration }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Email</small><br>
+                                    <h6 class="h6">{{ object.email }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Player Position</small><br>
+                                    <h6 class="h6">{{ object.position_of_play }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Football Level</small><br>
+                                    <h6 class="h6">{{ object.football_level }}</h6>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</main>
+{% endblock admin_content %}

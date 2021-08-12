@@ -26,6 +26,12 @@ nav a {
   color: blue !important;
 }
 
+/* borders */
+.box-border-left{
+  border-left: 8px solid blue !important;
+  margin: 0px 4px;
+}
+
 /* banner */
 .banner .banner-text {
   /* height: inherit; */

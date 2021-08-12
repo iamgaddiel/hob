@@ -1,3 +1,4 @@
 /src/db.sqlite3
 src/env.json
 startServer.sh
+src/media/

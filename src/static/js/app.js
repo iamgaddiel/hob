@@ -1,7 +1,7 @@
 $(() => {
     $("#consultBtn").click(e =>{
         e.preventDefault();
-        msg = "Reserve a date with the Boss by sending your request to our official email address. \n You will be hearing from one of our management team"
+        msg = "Reserve a date with the Boss by sending your request to our official email address. \n You will be hearing from one of our management team \n \n info@homeofballers.com"
 
         alert(msg)
     })

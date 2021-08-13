@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<main class="mt-5 container-fluid floating-abs">
+    <section class="list-wrapper pt-5">
+        <div class="list-wrapper-content">
+            <div class="list container ">
+                <div class="profile-image-preview rounded-top rounded-right rounded-bottom rounded-left"
+                    style="height: 160px; width: 160px; overflow: hidden; margin: auto;">
+                    <img src="{{ object.profile_image.url }}" alt="profile_image" style="height: 100%; width: 100%;">
+                </div>
+                <div class="card mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush p-0">
+                                <li class="list-group-item">
+                                    <small class="text-muted">First Name</small><br>
+                                    <h6 class="h6">{{ object.first_name }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Middle Name</small><br>
+                                    <h6 class="h6">{{ object.middle_name }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Last Name</small><br>
+                                    <h6 class="h6">{{ object.last_name }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Age</small><br>
+                                    <h6 class="h6">{{ object.age }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Height</small><br>
+                                    <h6 class="h6">{{ object.height }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Weight</small><br>
+                                    <h6 class="h6">{{ object.weight }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Nationality</small><br>
+                                    <h6 class="h6">{{ object.nationality }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Position</small><br>
+                                    <h6 class="h6">{{ object.player_position }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Preferred Foot</small><br>
+                                    <h6 class="h6">{{ object.preferred_foot }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Previous Club</small><br>
+                                    <h6 class="h6">{{ object.previous_club }}</h6>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <div>
+                                        <small class="text-muted">Previous Club(Date Started)</small><br>
+                                        <h6 class="h6">{{ object.previous_club_start }}</h6>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">Previous Club(Date Ended)</small><br>
+                                        <h6 class="h6">{{ object.previous_club_finish }}</h6>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Current Club(Date Started)</small><br>
+                                    {% if object.current_club_start_date is not None %}
+                                    <h6 class="h6">{{ object.current_club_start_date }}</h6>
+                                    {% else %}
+                                    <h6 class="h6">N/A</h6>
+                                    {% endif %}
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Awards</small><br>
+                                    <h6 class="h6">{{ object.awards }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Hobbies</small><br>
+                                    <h6 class="h6">{{ object.hobbies }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Educational Qualification</small><br>
+                                    <h6 class="h6">{{ object.educational_qualification }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Referees</small><br>
+                                    <h6 class="h6">{{ object.referees }}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <small class="text-muted">Video Clip Link</small><br>
+                                    {% if object.video_clip_link is not None %}
+                                    <h6 class="h6">{{ object.video_clip_link }}</h6>
+                                    {% else %}
+                                    <h6 class="h6">N/A</h6>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</main>
+{% endblock content %}

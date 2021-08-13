@@ -56,6 +56,10 @@ class PlayerList(ListView):
     template_name = "core/players.html"
     model = Player
 
+class PlayerDetail(DetailView):
+    template_name = "core/player_details.html"
+    model = Player
+
 
 class PlayerDashboard(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "core/player_dashboard.html"

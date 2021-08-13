@@ -19,7 +19,13 @@
                                 <div class="d-flex w-100">
                                     <div class="lhs">
                                         <b class="text-dark">{{ object.first_name }} {{ object.last_name }}</b> <br>
-                                        <small class="text-muted">{{ object.nationality }}</small>
+                                        <small class="text-muted">{{ object.nationality }}</small><br>
+                                        <small class="text-muted">Position: {{ object.player_position }}</small><br>
+                                        <small>
+                                            <a href="{% url 'player_detail' object.pk %}" class="text-capitalize nav-link p-0">
+                                                view profile
+                                            </a>
+                                        </small>
                                     </div>
                                 </div>
                             </div>

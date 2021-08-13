@@ -20,6 +20,7 @@ from .views import (
     Dispatcher,
     PlayerDashboard,
     PlayerList,
+    PlayerDetail,
     ListMentorships,
     MentorshipDetails
 )
@@ -31,6 +32,7 @@ urlpatterns = [
     path('download/contract/', DownloadPublicityContract.as_view(), name="download_publicity_contract"),
     path('download/booking/form/', DownloadBookingFormContract.as_view(), name="download_booking_form"),
     path('players/', PlayerList.as_view(), name="players"),
+    path('players/<pk>/', PlayerDetail.as_view(), name="player_detail"),
     # ====================== [Events[ ==================================
     path('events/', EventsList.as_view(), name="events_list"),
     path('events/<int:pk>/', EventDetail.as_view(), name="events_detail"),

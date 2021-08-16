@@ -22,7 +22,11 @@ from .views import (
     PlayerList,
     PlayerDetail,
     ListMentorships,
-    MentorshipDetails
+    MentorshipDetails,
+    AcademiesDetail,
+    AcademiesLists,
+    UpdatePlayerDetail,
+    UpdateEvent,
 )
 
 urlpatterns = [
@@ -33,18 +37,22 @@ urlpatterns = [
     path('download/booking/form/', DownloadBookingFormContract.as_view(), name="download_booking_form"),
     path('players/', PlayerList.as_view(), name="players"),
     path('players/<pk>/', PlayerDetail.as_view(), name="player_detail"),
+    path('academies/', AcademiesLists.as_view(), name="academy_list"),
+    path('academy/<pk>/', AcademiesDetail.as_view(), name="academy_detail"),
     # ====================== [Events[ ==================================
     path('events/', EventsList.as_view(), name="events_list"),
     path('events/<int:pk>/', EventDetail.as_view(), name="events_detail"),
     path('root/admin/events/form/crate/', EventsCreaton.as_view(), name="admin_create_event"),
     path('root/admin/events/get/<int:pk>/', AdminGetEvent.as_view(), name="admin_get_event"),
     path('root/admin/events/list/', AdminListEvents.as_view(), name="admin_events_list"),
+    path('root/admin/events/update/<pk>/', UpdateEvent.as_view(), name="admin_events_update"),
     # ====================== [Admin[ ==================================
     path('login/', Login.as_view(), name="login"),
     path('logout/', LogoutView.as_view(), name="logout"),
     path('root/admin/dashboard/', AdminDashboard.as_view(), name="admin_dashboard"),
     path('root/create/player/', CreatePlayer.as_view(), name="admin_create_player"),
     path('root/list/player/', ListPlayers.as_view(), name="admin_list_player"),
+    path('root/update/player/<pk>/', UpdatePlayerDetail.as_view(), name="admin_update_player"),
     path('root/get/player/<pk>/', GetPlayer.as_view(), name="admin_get_player"),
     path('services/', include('services.urls')),
     # ======================  [ Mentorship ] =====================================

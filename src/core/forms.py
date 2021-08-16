@@ -35,7 +35,7 @@ class EventCreationForm(forms.ModelForm):
         }
 
 
-class PlayerCreationForm(forms.ModelForm):
+class PlayerForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = [

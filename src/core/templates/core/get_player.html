@@ -1,13 +1,13 @@
 {% extends 'core/admin_dashboard.html' %}
 {% load static %}
 {% block admin_content %}
-<main class="mt-5 container-fluid floating-abs pb-5">
-    <section class="list-wrapper pt-5">
+<main class="mt-5 container-fluid pb-5">
+    <section class="list-wrapper pt-5 floating-abs ">
         <div class="list-wrapper-content">
-            <div class="profile-image rounded-circle mx-auto mb-5 mt-5" style="width: 130px; height: 130px;">
+            <div class="profile-image rounded-circle mx-auto mb-5 mt-5" style="width: 200px; height: 200px; overflow: hidden;">
                 <img src="{{ object.profile_image.url }}" alt="profile_image" style="width: 100%; height: auto;">
             </div>
-            <div class="card">
+            <div class="card" style="margin-top: 4rem;">
                 <div class="card-body">
                     <ul class="list-group list-group-flush p-0">
                         <li class="list-group-item">
@@ -88,17 +88,15 @@
                             <small class="text-muted">referees</small><br>
                             <h6 class="h6">{{ object.referees }}</h6>
                         </li>
-                        <li class="list-group-item">
-                            <small class="text-muted">referees</small><br>
-                            <h6 class="h6">
-                                <a href="{{ object.referees }}" class="nav-link p-0">{{ object.referees }}</a>
-                            </h6>
-                        </li>
-
                     </ul>
                 </div>
             </div>
         </div>
+
+        <!-- floating button -->
+        {% include "core/includes/floating_button.html" %}
+
     </section>
+    </a>
 </main>
 {% endblock admin_content %}

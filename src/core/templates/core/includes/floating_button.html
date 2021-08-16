@@ -1,0 +1,21 @@
+<!-- update floating button -->
+
+{% if  update_type  == "player" %}
+<a href="{% url 'admin_update_player' object.pk %}" class="nav-link p-0">
+    <div
+        class="floating-btn bg-primary rounded-circle d-flex justify-content-center align-items-center p-4">
+        <div class="floating-btn-content">
+            <i class="fa fa-pen-nib text-light"></i>
+        </div>
+    </div>
+</a>
+{% elif  update_type  == "events" %}
+<a href="{% url 'admin_events_update' object.pk %}" class="nav-link p-0">
+    <div
+        class="floating-btn bg-primary rounded-circle d-flex justify-content-center align-items-center p-4">
+        <div class="floating-btn-content">
+            <i class="fa fa-pen-nib text-light"></i>
+        </div>
+    </div>
+</a>
+{% endif %}

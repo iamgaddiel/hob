@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
+from django.shortcuts import resolve_url
+from django.urls import reverse
 from django.utils import timezone
 import uuid
 
@@ -45,6 +47,9 @@ class Player(models.Model):
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
 
+    def get_absolute_url(self, **kwargs):
+        return reverse("admin_get_player", kwargs={"pk": self.id})
+
 class Events(models.Model):
     title = models.CharField(max_length=400, unique=True)
     poster = models.ImageField(upload_to="event_image", default="image_image.png")
@@ -55,3 +60,6 @@ class Events(models.Model):
     
     def ___str__(self):
         pass
+    
+    def get_absolute_url(self, **kwargs):
+        return reverse("admin_get_event", kwargs={"pk": self.pk})

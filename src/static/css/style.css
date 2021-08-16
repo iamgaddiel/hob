@@ -203,7 +203,7 @@ nav a {
 .floating-btn {
   width: 25px;
   height: 25px;
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
 }

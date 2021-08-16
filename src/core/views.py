@@ -2,22 +2,23 @@ import os
 from random import randrange, seed
 from datetime import datetime
 from typing import Any, Dict, Optional
-from django.db.models import query
-from django.http import request
 from django.http.response import HttpResponse, FileResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, resolve_url
 from django.urls import reverse_lazy, reverse
+from django.urls.base import resolve
 from django.views.generic import TemplateView, CreateView, View, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
+from django.views.generic.edit import UpdateView
 
 
-from core.forms import EventCreationForm, LoginForm, PlayerCreationForm
+from core.forms import EventCreationForm, LoginForm, PlayerForm
 from core.models import Player, Events
-from services.models import MentorshipPayment, PlayerMentorship
+from core.utils import generate_password
+from services.models import AcademyPulicity, MentorshipPayment, PlayerMentorship
 
 
 class Index(TemplateView):
@@ -60,6 +61,14 @@ class PlayerDetail(DetailView):
     template_name = "core/player_details.html"
     model = Player
 
+class AcademiesLists(ListView):
+    model = AcademyPulicity
+    template_name = "core/academies.html"
+
+class AcademiesDetail(DetailView):
+    model = AcademyPulicity
+    template_name = "core/academies_detail.html"
+
 
 class PlayerDashboard(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "core/player_dashboard.html"
@@ -92,7 +101,7 @@ class CreatePlayer(LoginRequiredMixin, CreateView):
     template_name = 'core/forms.html'
     queryset = Player.objects.all()
     success_url = reverse_lazy('admin_list_player')
-    form_class = PlayerCreationForm
+    form_class = PlayerForm
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
@@ -100,14 +109,7 @@ class CreatePlayer(LoginRequiredMixin, CreateView):
         return context
 
     def form_valid(self, form) -> HttpResponse:
-        letters = "a#$w\cde546fgij@&*klmo^pqt7uyz12h3n8brs90!()xv"
-        password = ""
-        seed = datetime.now()
-        count = 0
-        while count < 15:
-            password += letters[randrange(0, len(letters))]
-            count += 1
-
+        password = generate_password()
         user = User.objects.create(
             username="{0}_{1}_{2}".format(
                 form.instance.first_name,
@@ -134,7 +136,7 @@ class ListPlayers(LoginRequiredMixin, ListView):
         context['list_type'] = "player"
         return context
 
-class GetPlayer(DetailView):
+class GetPlayer(LoginRequiredMixin, DetailView):
     queryset = Player.objects.all()
     template_name = 'core/get_player.html'
     context_object_name = 'player'
@@ -142,6 +144,17 @@ class GetPlayer(DetailView):
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context['dashboard_title'] = 'Player Profile'
+        context['update_type'] = "player"
+        return context
+
+class UpdatePlayerDetail(LoginRequiredMixin, UpdateView):
+    model = Player 
+    template_name = "core/forms.html"
+    form_class = PlayerForm
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["form_title"] = "Update Player"
         return context
 
 class SearchPlayers(LoginRequiredMixin, View):
@@ -178,6 +191,17 @@ class AdminGetEvent(DetailView):
     model = Events
     template_name = "core/event_detail.html"
     context_object_name = "event"
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["update_type"] = "events"
+        context["form_title"] = "Event"
+        return context
+
+class UpdateEvent(LoginRequiredMixin, UpdateView):
+    template_name = "core/forms.html"
+    model = Events
+    form_class = EventCreationForm
 
 
 # ============================== [ Events ] ========================================

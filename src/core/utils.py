@@ -16,3 +16,13 @@ def get_coupon_code(code_length: int) -> AnyStr:
         return coupon
     except:
         print("Enter a valid intergerr")
+
+def generate_password() -> str:
+    password = ""
+    letters = "a#$w\cde546fgij@&*klmo^pqt7uyz12h3n8brs90!()xv"
+    seed = datetime.now()
+    count = 0
+    while count < 15:
+        password += letters[randrange(0, len(letters))]
+        count += 1
+    return password
